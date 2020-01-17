@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.CategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.Category">
+        <id column="id" property="id" />
+        <result column="category_name" property="categoryName" />
+        <result column="category_code" property="categoryCode" />
+        <result column="category_type" property="categoryType" />
+    </resultMap>
+    <!-- 查询所有目录和目录文章的数量,用作显示在客户端页面上 -->
+	<select id="selectAllCategoryAndCount" resultType="java.util.Map">
+		SELECT cat.id as catId,cat.category_type as catType,cat.category_name as catName,cat.category_code as catCode,
+		case cat.category_type
+			when 'blog' then (SELECT count(1) from articles_blog artb where artb.category_id=cat.id)
+			when 'life' then (SELECT count(1) from articles_life artl where artl.category_id=cat.id)
+		end as artcount
+		from category cat where cat.category_type='blog'
+		or cat.category_type='life' ORDER BY artcount DESC
+	</select>
+</mapper>

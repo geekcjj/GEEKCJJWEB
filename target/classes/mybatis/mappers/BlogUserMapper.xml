@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.BlogUserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.BlogUser">
+        <id column="id" property="id" />
+        <result column="user_pic" property="userPic" />
+        <result column="username" property="username" />
+        <result column="nickname" property="nickname" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="personalintroduction" property="personalintroduction" />
+        <result column="personalizedsignature" property="personalizedsignature" />
+        <result column="create_time" property="createTime" />
+        <result column="myotherlink" property="myotherlink" />
+        <result column="birth_time" property="birthTime" />
+        <result column="user_gender" property="userGender" />
+        <result column="in_industry" property="inIndustry" />
+        <result column="in_city" property="inCity" />
+        <result column="is_admin" property="isAdmin" />
+    </resultMap>
+    <!-- 自定义查询用户信息结果 -->
+    <resultMap id="userInfoResultMap" type="java.util.Map">
+        <result column="userId" property="userId" />
+        <result column="userPic" property="userPic" />
+        <result column="username" property="username" />
+        <result column="nickname" property="nickname" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="personalintroduction" property="personalintroduction" />
+        <result column="personalizedsignature" property="personalizedsignature" />
+        <result column="createTime" property="createTime" />
+        <result column="myotherlink" property="myotherlink" />
+        <result column="birthTime" property="birthTime" />
+        <result column="userGender" property="userGender" />
+        <result column="inIndustry" property="inIndustry" />
+        <result column="inCity" property="inCity" />
+        <result column="is_admin" property="isAdmin" />
+        <collection property="roleItem" javaType="java.util.ArrayList"
+        ofType="java.util.Map" select="slectUserRole" column="{userId=userId}">
+        </collection>
+    </resultMap>
+    <!-- 通过用户名登录 -->
+	<select id="blogUserLoginByUserName" resultType="java.util.Map">
+		select bu.id as userId,bu.username as username,bu.nickname as nickname,bu.create_time as createTime,bu.myotherlink as myotherlink
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userName!=null and userName!=''">
+			and bu.username=#{userName}
+			</if>
+			<if test="password!=null and password!=''">
+			and	bup.password=#{password}
+			</if>
+		</where>
+	</select>
+	<!-- 通过email登录 -->
+	<select id="blogUserLoginByEmail" resultType="java.util.Map">
+		select bu.id as userId,bu.username as username,bu.nickname as nickname,bu.create_time as createTime,bu.myotherlink as myotherlink
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userEmail!=null and userEmail!=''">
+			and bu.email=#{userEmail}
+			</if>
+			<if test="password!=null and password!=''">
+			and	bup.password=#{password}
+			</if>
+		</where>
+	</select>
+	<!-- 通过手机号登录 -->
+	<select id="blogUserLoginByPhone" resultType="java.util.Map">
+		select bu.id as userId,bu.username as username,bu.nickname as nickname,bu.create_time as createTime,bu.myotherlink as myotherlink
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="phoneNumber!=null and phoneNumber!=''">
+			and bu.phone=#{phoneNumber}
+			</if>
+			<if test="password!=null and password!=''">
+			and	bup.password=#{password}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名查询是否存在该账户 -->
+	<select id="isExistUserName" resultType="java.lang.Integer">
+		select count(1) from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="username!=null and username!=''">
+			and bu.username=#{username}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名查询是否存在该账户 -->
+	<select id="isExistUserEmail" resultType="java.lang.Integer">
+		select count(1) from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userEmail!=null and userEmail!=''">
+			and bu.username=#{userEmail}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名查询是否存在该账户 -->
+	<select id="isExistPhoneNumber" resultType="java.lang.Integer">
+		select count(1) from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="phoneNumber!=null and phoneNumber!=''">
+			and bu.username=#{phoneNumber}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名拿到用户的userId,userPic,nickname, -->
+	<select id="selectUserIdByUserName" resultType="java.util.Map">
+		select bup.blog_user_id as userId,bu.user_pic as userPic,bu.nickname as nickname,bu.username as userName,bu.myotherlink as myotherlink
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userName!=null and userName!=''">
+			and bu.username=#{userName}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名拿到用户的简单信息 -->
+	<select id="selectUserBriefByUserName" resultType="java.util.Map">
+		select bup.blog_user_id as userId,bu.user_pic as userPic,bu.nickname as nickname,bu.username as userName,bu.phone as phone,bu.email as email,
+		bu.myotherlink as myotherlink,bu.personalintroduction as personalintroduction,bu.personalizedsignature as personalizedsignature
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userName!=null and userName!=''">
+			and bu.username=#{userName}
+			</if>
+		</where>
+	</select>
+	<!-- 通过用户名拿到userInfo即用户的所有的信息 -->
+	<select id="selectUserInfoByUserName" resultType="java.util.Map">
+		select bu.id as userId,bu.user_pic as userPic,bu.username as username,bu.nickname as nickname,bu.email as email,bu.phone as phone
+		,bu.personalintroduction as personalintroduction,bu.personalizedsignature as personalizedsignature,bu.birth_time as birthTime
+		,bu.myotherlink as myotherlink,bu.birth_time as birthTime,bu.user_gender as userGender,bu.in_industry as inIndustry,bu.in_city as inCity
+		 from blog_user bu INNER JOIN blog_user_pwd bup on bu.id=bup.blog_user_id 
+		<!-- where bu.username='admin' and bup.password=123456 -->
+		<where>
+			<if test="userName!=null and userName!=''">
+			and bu.username=#{userName}
+			</if>
+		</where>
+	</select>
+	<!-- 查询userInfo即用户的所有的信息 -->
+	<select id="selectAllUserInfo" resultMap="userInfoResultMap">
+		select bu.id as userId,bu.user_pic as userPic,bu.username as userName,bu.nickname as nickName,bu.email as email,bu.phone as phone
+		,bu.personalintroduction as personalintroduction,bu.personalizedsignature as personalizedsignature,bu.birth_time as birthTime
+		,bu.myotherlink as myotherlink,bu.birth_time as birthTime,bu.create_time as createTime,bu.user_gender as userGender,bu.in_industry as inIndustry,bu.in_city as inCity
+		 from blog_user bu ORDER BY bu.create_time DESC
+		<!-- where bu.username='admin' and bup.password=123456 -->
+	</select>
+	<!-- 根据用户角色Id查询角色 -->
+	<select id="slectUserRole" resultType="java.util.Map">
+		select ur.role_name as roleName,ur.role_code as roleCode,ur.role_description as roleDescription from user_role ur inner join blog_user_role bur on bur.role_id=ur.id
+		<where>
+			<if test="userId!=null and userId!=''">
+			and bur.user_id=#{userId}
+			</if>
+		</where>
+	</select>
+</mapper>

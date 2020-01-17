@@ -1,0 +1,783 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<!--            梦极客  |  一个渴望成为全栈工程师的伪程序员       
+    
+                                  _ooOoo_
+                                 o8888888o
+                                 88" . "88	
+                                 (| -_- |)         
+                                 O\  =  /O	
+                              ____/`---'\____	
+                            .'  \\|     |//  `.
+                           /  \\|||  :  |||//  \
+                          /  _||||| -:- |||||-  \
+                          |   | \\\  -  /// |   |
+                          | \_|  ''\---/''  |   |
+                          \  .-\__  `-`  ___/-. /
+                        ___`. .'  /--.--\  `. . __
+                     ."" '<  `.___\_<|>_/___.'  >'"".
+                    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+               ======`-.____`-.___\_____/___.-`____.-'======
+                                  `=---='
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+     -本模板源码由麦客工作室倾尽心血二次美化，望佛祖保佑梦极客园永远无BUG!-
+     
+           -梦极客园邮箱:geekcjj@gmail.com   qq:1789615426 -
+    
+    -->
+<head>
+    <title>梦极客园</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="description" content="本站面向全国互联网科技爱好者，是互联网信息资讯共享的友好平台，共享优质的互联网信息资讯、技术文章、源代码项目等……" >
+    <meta name="keywords" content="梦极客园,梦极客园geekcjj,梦极客园网,源代码,资源下载，免费，互联网信息共享">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" >
+    <link rel="shortcut icon" href="/images/bloglogo.png" >
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" >
+    <link href="/css/leavemessage.css" rel="stylesheet" type="text/css" media="all" >
+    <link rel="stylesheet" href="/css/animate.min.css" >
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" >
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" >
+    <link href="/summernote/summernote.css" rel="stylesheet">
+    <link rel="stylesheet" href="/geekcjjback/admin/font-awesome/css/font-awesome.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="/images/bloglogo.png" class="top_banner_logo" onmouseover="this.src='/images/bloglogo.png'"
+                        onmouseout="this.src='/images/bloglogo.png'" />
+                    <span class="logo-text navbar-collapse collapse animated rotateIn">梦极客园</span>
+                </div>
+                <div class="right-block">
+                    <div class="wow pulse bg-yellow" data-wow-delay="0.1s">人生，</div>
+                    <div class="wow rollIn bg-red" data-wow-iteration="1" data-wow-duration="0.5s">就像一盒巧克力，</div>
+                    <div class="wow bounceInRight bg-blue">你永远不知道下一块会是什么味道！</div>
+                    <div class="wow bounceInRight bg-blue">---《阿甘正传》</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default navbar-static-top" id="navigator_bar">
+        <div class="container animated bounceInLeft">
+            <div class="navbar-header">
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#collapse_searche_div">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#navbar_collapse_div">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">
+                                        <img src="images/mai.png" class="logo_img" onmouseover="this.src='images/mai.jpg'"
+                                            onmouseout="this.src='images/mai.png'" style="width:22px;height:22px;" />
+                                    </a> -->
+                <a class="navbar-brand visible-xs" href="https://www.geekcjj.top/">梦极客园</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar_collapse_div">
+                <ul class="nav navbar-nav navbar-left navbar_ul">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+    
+                    <li>
+                        <a href="/techBlogList">IT技术</a>
+                    </li>
+                    <li>
+                        <a href="/newTalkList">新闻杂谈</a>
+                    </li>
+    
+                    <li>
+                        <a href="/resourceDownload">资源文件</a>
+                    </li>
+    
+                    <li>
+                        <a href="javascript:0;">生活随笔</a>
+                        <div class="itembox">
+                            <ul>
+                                <li><a href="/thinkingLife">格物生活</a></li>
+                                <li><a href="/personalEssay">个人随笔</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li class="menuactive">
+                        <a href="/leavemessage-board">给我留言</a>
+                    </li>
+                    <li>
+                        <a href="/aboutgeekcjj">关于梦极客园</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="#">消息 <span class="badge">42</span></a></li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">GEEKCJJ<span class="caret"></span></a>
+                        <ul class="dropdown dropdown-menu navbar_ul">
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="#">我的收藏</a></li>
+                            <li><a href="#">账号设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse animated fadeInDown" id="collapse_searche_div">
+                <div class="search_bar5">
+                    <form>
+                        <input type="text" class="form-control" placeholder="请输入您要搜索的内容...">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--
+        ////////////////////////////////////////////////////////////////////
+        // _ooOoo_ //
+        // o8888888o //
+        // 88" . "88 //
+        // (| ^_^ |) //
+        // O\ = /O //
+        // ____/`---'\____ //
+        // .' \\| |// `. //
+        // / \\||| : |||// \ //
+        // / _||||| -:- |||||- \ //
+        // | | \\\ - /// | | //
+        // | \_| ''\---/'' | | //
+        // \ .-\__ `-` ___/-. / //
+        // ___`. .' /--.--\ `. . ___ //
+        // ."" '< `.___\_<|>_/___.' >'"". //
+        // | | : `- \`.;`\ _ /`;.`/ - ` : | | //
+        // \ \ `-. \_ __\ /__ _/ .-` / / //
+        // ========`-.____`-.___\_____/___.-`____.-'======== //
+        // `=---=' //
+        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
+        // 佛祖保佑 永不宕机 永无BUG //
+        ////////////////////////////////////////////////////////////////////
+    -->
+    <div class="">
+        <div class="container container-content">
+            <section class="row">
+                <div class="col-lg-9 col-md-9 animated slideInLeft">
+                	<div class="hidden-xs" id="pblish-comment">
+	                	<div class="container-fluid">
+	                		<div class="row">
+	                			<div class="contact-box"> 
+						           <form id="ajax-contact-web" action="" method="post"> 
+						            <div class="form-group row">
+						             <div class="col-lg-4 col-md-4 col-sm-4">
+						             <input type="hidden" value="0" name="parentId">
+						              <input type="text" class="form-control" id="name-web" name="name" placeholder="姓名*" required="" /> 
+						             </div> 
+						             <div class="col-lg-4 col-md-4 col-sm-4"> 
+						              <input type="email" class="form-control" id="email-web" name="email" placeholder="Email*" required="" /> 
+						             </div>
+						             <div class="col-lg-4 col-md-4 col-sm-4"> 
+						             	<input type="text" class="form-control" id="myWebSite-web" name="myWebSite" placeholder="网址" /> 
+						             </div>
+						            </div>
+						            <div class="form-group"> 
+						             <textarea id="summernote" class="summernote" name="editordata-web"></textarea>
+						            </div>
+						            <div class="form-group">
+						            	<button class="btn btn-primary" type="button" onclick="userLeaveMessage()">提 交</button><span id="callback-msg-web"></span>
+						            </div>
+						            <!-- <div id="form-messages"></div> --> 
+						           </form> 
+						        </div>
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="container-fluid">
+	                	<div class="row">
+	                		<div class="well well-sm well-no-margin">
+	                		<h5 id="lw-number">留言条数:</h5>
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="leavewords-container">
+	                	<div class="articleComment" id="articleComment">
+	                		<div class="comment-lw" id="comment-lw1">
+	                			<div class="comment-main">
+	                				<a class="user-logo"><img src="images/bloglogo.png"></a>
+			                	 	<div class="comment-content">
+			                	 		<div class="comment-info"><a>geekcjj</a><span>2019-10-30</span></div>
+			                	 		<div class="comment-text">UI是不是is 的回复是哦哦 iii 水淀粉i i 个 iu 千万聘
+			                	 		请红腹锦鸡多少圣诞节过后会挥洒i u 河东狮吼是撒 hi 哦我我儿和 u 日本 v 想看见你自 i u 三等奖</div>
+			                	 		<div class="comment-action"><a href="javascript:void(0)" selfid="6">回复</a></div>
+			                	 	</div>
+	                			</div>
+	                			<div class="comments-lw" id="comments-lw1">
+	                				<div class="comment-lw" id="comment-lw1">
+			                			<div class="comment-main">
+			                				<a class="user-logo"><img src="images/bloglogo.png"></a>
+					                	 	<div class="comment-content">
+					                	 		<div class="comment-info"><a>geekcjj</a><span>2019-10-30</span></div>
+					                	 		<div class="comment-text">UI是不是is 的回复是哦哦 iii 水淀粉i i 个 iu 千万聘
+					                	 		请红腹锦鸡多少圣诞节过后会挥洒i u 河东狮吼是撒 hi 哦我我儿和 u 日本 v 想看见你自 i u 三等奖</div>
+					                	 		<div class="comment-action"><a href="javascript:void(0)" selfid="6">回复</a></div>
+					                	 	</div>
+			                			</div>
+			                			<div class="comments-lw" id="comments-lw2">
+			                				
+			                			</div>
+			                		</div>
+	                			</div>
+	                		</div>
+	                	</div>
+	                	<br>
+	                </div>
+	                <div class="pagenumber">
+	                	<div class="container-fluid">
+		                <div class="row">
+		                	<nav class="pagenum" id="pagenum1">
+							    <span class="pagenum-btns">
+							      <a class="pagenum-prev">&laquo;</a>
+							      <a class="pagenum-num">1</a>
+							      <span class="pagenum-break">...</span>
+							      <a class="pagenum-num">7</a>
+							      <a class="pagenum-num">8</a>
+							      <a class="pagenum-active">9</a>
+							      <a class="pagenum-num">10</a>
+							      <a class="pagenum-num">11</a>
+							      <span class="pagenum-break">...</span>
+							      <a class="pagenum-num">98</a>
+							      <a class="pagenum-next">&raquo;</a>
+							    </span>
+							    <span class="pagenum-skip">
+							      共<b class="pagenum-total">98</b>页&nbsp;&nbsp;到第<input class="pagenum-input" value="1" type="text" />页<a class="pagenum-ok">确定</a>
+							    </span>
+							</nav>
+		                </div>
+		                </div>
+	                </div>
+                </div>
+                <aside class="col-lg-3 col-md-3 animated slideInRight">
+                    <div class="right-fun">
+                        <div class="model hidden-xs">
+                            <div class="title">
+                            <span class="glyphicon glyphicon-search"></span>&nbsp;站内搜索</div>
+                            <div class="content">
+                                <div class="searche_bar7">
+                                    <form>
+                                        <input type="text" placeholder="请输入关键词" name="crid" />
+                                        <button type="submit"></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" style="margin-top:20px;">
+		                    <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+		                    <span class="glyphicon glyphicon-th"></span>&nbsp;分类
+		                    </div>
+                            <div class="panel-body" id="cat-list">
+                                <a style="margin-bottom: 3px;" class="btn btn-default btn-sm">Linux系统编程<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Python<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Django<span class="badge badge-info"></span>
+                                </a>
+                               	<a style="margin-bottom: 3px" class="btn btn-default btn-sm">深度学习<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">MySql<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">生活<span class="badge badge-info"></span><!-- type="button" -->
+                                </a>
+                            </div>
+		                </div>
+                        <div class="panel panel-default recommendlist" style="margin-top:20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                <span class="glyphicon glyphicon-list"></span>&nbsp;快捷菜单
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div class="model recommend">
+                                                                                                                    						                            <div class="title">热门推荐</div>						                            <div class="content"> -->
+                                <div class="fastmenu">
+                                    <span><a href="http://www.maikete.com">文章博客</a></span>
+                                    <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                    <span><a href="http://www.maikete.com">资源文件</a></span>
+                                    <span><a href="http://www.maikete.com">格物生活</a></span>
+                                    <span><a href="http://www.maikete.com">给我留言</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="model">
+                                                <div class="title">快捷菜单</div>
+                                                <div class="menu">
+                                                        <span><a href="http://www.maikete.com">文章博客</a></span>
+                                                        <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                                        <span><a href="http://www.maikete.com">资源文件</a></span>
+                                                        <span><a href="http://www.maikete.com">格物生活</a></span>
+                                                        <span><a href="http://www.maikete.com">给我留言</a></span>
+                                                </div>
+                                                </div> -->
+                        <div class="panel panel-default" style="margin-top:20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001);">
+                                <span class="glyphicon glyphicon-th-list"></span>&nbsp;热门文章
+                            </div>
+                            <div class="panel-body recommendlist">
+                                <!-- <div class="model recommend">
+                            <div class="title">热门推荐</div>
+                            <div class="content"> -->
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_317.html">dw个人网页模板作业成品</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_382.html">HTML个人简历源代码</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_381.html">自我介绍个人网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_379.html">DIV+CSS静态HTML网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_377.html">一个完整的html网页设计代码免费下载</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </div>
+	<!-- 按钮触发模态框 -->
+	<button class="btn btn-primary visible-xs"style="position:fixed; right:9px; bottom:30px; background-color:#CCC;z-index: 99;"
+		data-toggle="modal" data-target="#leaveMessageModal"><span class="glyphicon glyphicon-edit"></span>&nbsp;留言评论</button>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="leaveMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+	   <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+	     <div class="modal-header"> 
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button> 
+	      <h4 class="modal-title" id="myModalLabel"> 留言评论 </h4> 
+	     </div> 
+	     <div class="modal-body"> 
+	      <section id="contact-area"> 
+	       <div class="container-fluid"> 
+	        <div class="row"> 
+	         <div class="col-lg-10 offset-lg-1"> 
+	          <div class="contact-box text-center"> 
+	           <form id="ajax-content-mobile" action="" method="post"> 
+	            <div class="form-group row"> 
+	             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+	              <input type="text" class="form-control" id="name-mobile" name="name" placeholder="姓名*" required="" /> 
+	             </div> 
+	             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+	              <input type="email" class="form-control" id="email-mobile" name="email" placeholder="Email*" required="" /> 
+	             </div> 
+	            </div> 
+	            <div class="form-group"> 
+	             <input type="text" class="form-control" id="myWebSite-mobile" name="myWebSite" placeholder="网址" /> 
+	            </div> 
+	            <div class="form-group"> 
+	             <textarea class="form-control" id="message-mobile" name="editordata-web" rows="5" placeholder="留言内容*" ></textarea> 
+	            </div> 
+	            <!-- <button type="submit">提 交</button> --> 
+	            <!-- <div id="form-messages"></div> --> 
+	           </form> 
+	          </div> 
+	         </div> 
+	        </div> 
+	       </div> 
+	      </section> 
+	     </div> 
+	     <div class="modal-footer">
+	     <span id="callback-msg-mobile"></span>
+	      <button type="button" class="btn btn-default" data-dismiss="modal">关闭 </button> 
+	      <button type="button" class="btn btn-primary" onclick="mobileLeaveWords()"> 提交 </button> 
+	     </div> 
+	    </div>
+	    <!-- /.modal-content --> 
+	   </div>
+	   <!-- /.modal --> 
+	</div>
+    <div class="friendlink_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="friendlink_title"><label>友情链接:</label></div>
+                    <div class="friendlink_content" id="friendlink_content">
+                        <a class="friendlink_a" href="https://www.maikete.xyz">麦科特</a><a class="friendlink_a"
+                            href="https://www.chitang.club">小池塘</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <h2>GEEKCJJ<span style="color:#FF6347;">'S</span> 梦极客园</h2> -->
+                    <p>由<a href="http://www.maikete.xyz" target="_blank"
+                            style="color:white;text-decoration:underline;">GEEKCJJ</a>提供技术支持</p>
+                    <p>© 2018－2019 maikete.xyz, all rights reserved &nbsp;<a href="http://beian.miit.gov.cn"
+                            target="_blank">苏ICP备19023267号-3</a></p>
+                    <p><a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19023267号-3 &amp;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/html5.js" type="text/javascript"></script>
+    <script src="/js/jquery-3.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/gcComment.js"></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/summernote/summernote.js" type="text/javascript"></script>
+    <script src="/js/wow.min.js" type="text/javascript"></script>
+    <script src="/summernote/lang/summernote-zh-CN.js" type="text/javascript"></script>
+    <!-- <script src="plugin/SuperSlide/js/jquery.min.js"></script> -->
+    <!-- <script src="js/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="plugin/SuperSlide/js/superslide.2.1.js"></script> -->
+    <script type="text/javascript" th:inline="javascript">
+        if (!/msie [6|7|8|9]/i.test(navigator.userAgent)) {
+            new WOW().init();
+        }
+		
+        //$(document).ready(function(e){}
+        $(function(e) {
+            // var offset = 890;
+            // $(window).on('scroll', function() {
+            //     if ($(this).scrollTop() > offset) {
+            //         $('.recommendlist').css('position', 'fixed');
+            //         $('.recommendlist').css('top', '0px');
+            //     } else {
+            //         $('.recommendlist').css('position', '');
+            //     }
+            // });
+            // var agoComment = [
+			//                   {"id":1,"userName":"游客1","time":"2014-04-04","sortID":0,"content":"第一条评论"},
+			//                   {"id":2,"userName":"游客2","time":"2014-04-04","sortID":0,"content":"第二条评论"},
+			//                   {"id":3,"userName":"站长","time":"2014-04-04","sortID":1,"content":"第一条评论的回复"},
+			//                   {"id":4,"userName":"站长","time":"2014-04-04","sortID":2,"content":"第二条评论的回复"},
+			//                   {"id":5,"userName":"游客3","time":"2014-04-04","sortID":0,"content":"第三条评论"},
+			//                   {"id":6,"userName":"游客2","time":"2014-04-04","sortID":4,"content":"第二条评论的回复的回复"},
+			//                   ];
+			getAllUserLeaveWords();
+            $(".navbar_ul li").click(function() {
+				//alert("点击了按钮");
+		        $(this).siblings('li').removeClass('menuactive');  
+		        $(this).addClass('menuactive');                          
+		    });
+	         //其中的editor是文本输入框(textarea)的id
+	        $('#summernote').summernote(
+	           	{
+	            lang:"zh-CN",
+	            placeholder: '开始写...',
+	            tabsize: 2,
+	            height: 120,
+	            //回调函数
+              	callbacks: {
+                   //初始化
+                   onInit: function() {
+                       //init
+                   },
+                   //焦点
+                   onFocus: function() {
+                       //focus
+                   },
+                   //图片文件上传
+                   onImageUpload: function(files, editor, $editable) {
+                       data = new FormData();  
+                       data.append("file", files[0]);  
+                     $.ajax({  
+                         data : data,  
+                         type : "POST",  
+                         url : "",   
+                         cache : false,  
+                         contentType : false,  
+                         processData : false,  
+                         dataType : "json",  
+                         success: function(data) {  
+                             //[服务器所在文件所在目录位置]一般为"http://119.23.216.181/RoboBlogs/Upload_File/default_show.png"
+                             $('#summernote').summernote('insertImage', "[服务器所在文件所在目录位置]");  
+                         },  
+                         error:function(){  
+                             alert("上传失败");  
+                         }  
+                     });  
+                   }
+                }
+	         	},'undo','redo'
+	         );
+            $(window).on("scroll", function() {
+                if ($(this).scrollTop() > 150) {
+                    // $('#navigator_bar').css('position', 'fixed');
+                    // $('#navigator_bar').css('top', '0px');
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top navbar-fixed-top animated slideInDown"
+                    );
+                    //$("#pblish-comment").css("position", "fixed")
+                    $(".container-content").css("margin", "71px auto 0 auto");
+                    //$('#navigator_bar').css('');
+                } else {
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top"
+                    );
+                    $(".container-content").css("margin", "20px auto 0 auto");
+                    //$('#navigator_bar').css('position', '');
+                }
+            });
+			$.ajax({
+                url: "/category/blog/getAllCategoryCount",
+                data: {},
+                type: "get",
+                success: function (data) {
+                    // if (JSON.parse(data).state === 404 || JSON.parse(data).state === 202 || userinfo.UserPhoneNum === '86//') {
+                    //     alert("验证码发送失败")
+                    // } else {
+                    //     alert("验证码发送成功，请耐心等待")
+                    // }
+                    $('#cat-list').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var categorylist = '<a style="margin-bottom: 3px; " class="btn btn-default btn-sm">'+this.catName+'&nbsp;<span class="badge badge-info">'+this.artcount+'</span>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#cat-list').append(categorylist);
+                    });
+                    var tags_a = $("#cat-list a");
+                    tags_a.each(function () {
+                        var x = 9;
+                        var y = 0;
+                        var rand = parseInt(Math.random() * (x - y + 1) + y);
+                        //$(this).addClass("tags"+rand);
+                        $(this).css("color", getRandomColor2);
+                        $(this).css("font","bold");
+                        $(this).css("font-family","楷体")
+                    });
+                },
+                error: function () {
+                    console.log("发送失败");
+                }
+            });
+            $.ajax({
+			    type: "GET", 
+			    url: "/friendLink/blog/blogFrienfLink",
+			    data: {}, //可选参数
+			    dataType: "json",
+			    success: function(data){
+			    	$('#friendlink_content').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var linklist = '<a class="friendlink_a" href="'+this.linkUrl+'" title="'+this.linkName+'">'+this.linkName+'</a>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#friendlink_content').append(linklist);
+                    });
+			    console.log(data);
+			    	console.log(data);
+			    } //可选参数
+			});
+        });
+        function userLeaveMessage(){
+        	var datacontent=$("#ajax-contact-web").serialize();
+        	console.log('内容:'+datacontent);
+        	if($("#summernote").val()==""||$("#name-web").val()==""||$("#email-web").val()==""){
+        		$("#callback-msg-web").html("带*号为必填项!");
+        	}else{
+        		$.post("/leaveWords/blog/userLeaveWords", 
+	        		datacontent,
+		          	function(data){
+			          	//alert(data.name); // John
+			          	console.log(data.data); //  2pm
+			          	if(data.data==true){
+			          		$("#callback-msg-web").html("");
+			          		$("#summernote").val('');
+			          		$("#name-web").val('');
+			          		$("#email-web").val('');
+			          		$("#myWebSite-web").val('');
+			          		getAllUserLeaveWords();
+			          	}else{
+			          		$("#callback-msg-web").html(data.data);
+			          		$("#summernote").val('');
+			          		$("#name-web").val('');
+			          		$("#email-web").val('');
+			          		$("#myWebSite-web").val('');
+			          	}
+			        },
+			        "json"
+	        	);
+        	}
+        }
+        function mobileLeaveWords(){
+        	var datacontent=$("#ajax-content-mobile").serialize();
+        	console.log('内容:'+datacontent);
+        	if($("#message-mobile").val()==""||$("#name-mobile").val()==""||$("#email-mobile").val()==""){
+        		$("#callback-msg-mobile").html("带*号为必填项!");
+        	}else{
+        		$.post("/leaveWords/blog/userLeaveWords", 
+	        		datacontent,
+		          	function(data){
+			          	//alert(data.name); // John
+			          	console.log(data.data); //  2pm
+			          	if(data.data==true){
+			          		$("#callback-msg-mobile").html("");
+			          		$("#message-mobile").val('');
+			          		$("#name-web").val('');
+			          		$("#email-web").val('');
+			          		$("#myWebSite-web").val('');
+			          	}else{
+			          		$("#callback-msg-mobile").html(data.data);
+			          		$("#message-mobile").val('');
+			          		$("#name-web").val('');
+			          		$("#email-web").val('');
+			          		$("#myWebSite-web").val('');
+			          	}
+			        },
+			        "json"
+	        	);
+        	}
+        }
+        function getAllUserLeaveWords() {
+		    var agoComment = '';
+		    $.getJSON("/leaveWords/blog/listAllLeaveWordsTwo",{pageNum:1}, function (data) {
+		        // $.each(data.items, function (i, item) {
+		        // 	$("<img/>").attr("src", item.media.m).appendTo("#images");
+		        // 	if (i == 3) return false;
+		        // });
+		        //agoComment = data.data.list;
+		        agoComment = [[${list}]];
+		        $("#articleComment").html("");
+		        $("#articleComment").gcComment({
+		            "width": "355",
+		            "height": "33",
+		            "agoComment": agoComment,
+		            "callback": function (comment) {
+		                console.info("填写内容返回值：");
+		                console.info(comment);
+		                console.log(agoComment);
+		                // 添加新的评论
+		                $("#articleComment").gcComment("setCommentAfter", {
+		                    "id": 123,
+		                    "nickName": "name",
+		                    "content": "content",
+		                    "createTime": "2014-04-14"
+		                });
+		
+		            }
+		        });
+		        $("#lw-number").html("留言条数:" + data.count);
+		    });
+		}
+        function rgb(){//rgb颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var rgb = '('+r+','+g+','+b+')';
+			return rgb;
+		}
+		function color16(){//十六进制颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+			return color;
+		}
+		//颜色对象
+		function getRandomColor1(){
+		    this.r = Math.floor(Math.random()*255);
+		    this.g = Math.floor(Math.random()*255);
+		    this.b = Math.floor(Math.random()*255);
+		    this.color = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)';
+		}
+		var getRandomColor2 = function(){    
+		    return  '#' + (function(color){    
+		         return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])    
+		         && (color.length == 6) ?  color : arguments.callee(color);    
+		    })('');    
+		}
+		//方法三
+		function getRandomColor3(){
+		   	return '#'+Math.floor(Math.random()*256).toString(10);
+		}
+		//方法四
+		function getRandomColor4(){
+		    return '#'+Math.floor(Math.random()*0xffffff).toString(16);
+		}
+		//方法五
+		function getRandomColor5(){
+		    return  '#'+Math.random().toString(16).slice(2,8)
+		}
+    </script>
+    <script src="/js/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+		document.body.oncopy = function () {
+		swal("复制成功！", "若要转载请务必保留原文链接，申明来源，谢谢合作！By:梦极客园","success");
+		addLink();
+		/* setTimeout( function () {
+			//window.event.returnValue = false;
+			var text = window.clipboardData.getData("text"); 
+			if (text) {
+			text = text + "\r\n本篇文章来源于google( www.google.com) 原文链接："+location.href;
+			clipboardData.setData("text", text); 
+			} 
+			},100); */
+		}
+		function addLink() {
+		    var body_element = document.body;
+		    var selection;
+		    selection = window.getSelection();
+		    if (window.clipboardData) { // Internet Explorer
+		        var pagelink ="\r\n\r\n 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        window.clipboardData.setData ("Text", copytext);
+		        return false;
+		    } else {
+		        var pagelink = " 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        var newdiv = document.createElement('div');
+		        newdiv.style.position='absolute';
+		        newdiv.style.left='-99999px';
+		        body_element.appendChild(newdiv);
+		        newdiv.innerHTML = copytext;
+		        selection.selectAllChildren(newdiv);
+		        window.setTimeout(function() {
+		        body_element.removeChild(newdiv);
+		        },0);
+		    }
+		}
+		//防止页面被iframe调用 
+		//(function(window) { if (window.location != window.top.location) { window.top.location = window.location; }})(this);
+	</script>
+	<script type="text/javascript">
+	/* 鼠标特效 */
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+	 $("body").click(function(e) {
+	 var a = new Array("三民主义","民族","民权","民生");
+	 var $i = $("<span/>").text(a[a_idx]);
+	 a_idx = (a_idx + 1) % a.length;
+	 var x = e.pageX,
+	 y = e.pageY;
+	 $i.css({
+	 "z-index": 9999999,
+	 "top": y - 20,
+	 "left": x,
+	 "position": "absolute",
+	 "font-weight": "bold",
+	 "color": "#ff6651"
+	 });
+	 $("body").append($i);
+	 $i.animate({
+	 "top": y - 180,
+	 "opacity": 0
+	 },
+	 1500,
+	 function() {
+	 $i.remove();
+	 });
+	 });
+	});
+	</script>
+</body>
+
+</html>

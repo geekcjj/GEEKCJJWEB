@@ -1,0 +1,867 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<!--            梦极客  |  一个渴望成为全栈工程师的伪程序员       
+    
+                                  _ooOoo_
+                                 o8888888o
+                                 88" . "88	
+                                 (| -_- |)         
+                                 O\  =  /O	
+                              ____/`---'\____	
+                            .'  \\|     |//  `.
+                           /  \\|||  :  |||//  \
+                          /  _||||| -:- |||||-  \
+                          |   | \\\  -  /// |   |
+                          | \_|  ''\---/''  |   |
+                          \  .-\__  `-`  ___/-. /
+                        ___`. .'  /--.--\  `. . __
+                     ."" '<  `.___\_<|>_/___.'  >'"".
+                    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+               ======`-.____`-.___\_____/___.-`____.-'======
+                                  `=---='
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+     -本模板源码由麦客工作室倾尽心血二次美化，望佛祖保佑梦极客园永远无BUG!-
+     
+           -梦极客园邮箱:geekcjj@gmail.com   qq:1789615426 -
+    
+    -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="description" content="本站面向全国互联网科技爱好者，是互联网信息资讯共享的友好平台，共享优质的互联网信息资讯、技术文章、源代码项目等……" >
+    <meta name="keywords" content="梦极客园,梦极客园geekcjj,梦极客园网,源代码,资源下载，免费，互联网信息共享">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" >
+    <title>梦极客园</title>
+    <link rel="shortcut icon" href="images/bloglogo.png" />
+    <link href="css/homeforgeekcjj.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/geekcjjback/admin/font-awesome/css/font-awesome.css">
+</head>
+
+<body>
+    <header class="header" id="header_div">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="images/bloglogo.png" class="top_banner_logo" onmouseover="this.src='images/bloglogo.png'"
+                        onmouseout="this.src='images/bloglogo.png'" />
+                    <span class="logo-text navbar-collapse collapse animated rotateIn">梦极客园</span>
+                </div>
+                <div class="right-block">
+                    <div class="wow pulse bg-yellow" data-wow-delay="0.1s">人生，</div>
+                    <div class="wow rollIn bg-red" data-wow-iteration="1" data-wow-duration="0.5s">就像一盒巧克力，</div>
+                    <div class="wow bounceInRight bg-blue">你永远不知道下一块会是什么味道！</div>
+                    <div class="wow bounceInRight bg-blue">---《阿甘正传》</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default navbar-static-top" id="navigator_bar">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#collapse_searche_div">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#navbar_collapse_div">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">
+                                        <img src="images/mai.png" class="logo_img" onmouseover="this.src='images/mai.jpg'"
+                                            onmouseout="this.src='images/mai.png'" style="width:22px;height:22px;" />
+                                    </a> -->
+                <a class="navbar-brand visible-xs" href="https://www.geekcjj.top/">梦极客园</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar_collapse_div">
+                <ul class="nav navbar-nav navbar-left navbar_ul">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+    
+                    <li class="menuactive">
+                        <a href="/techBlogList">IT技术</a>
+                    </li>
+                    <li>
+                        <a href="/newTalkList">新闻杂谈</a>
+                    </li>
+    
+                    <li>
+                        <a href="/resourceDownload">资源文件</a>
+                    </li>
+    
+                    <li>
+                        <a href="javascript:0;">生活随笔</a>
+                        <div class="itembox">
+                            <ul>
+                                <li><a href="/thinkingLife">格物生活</a></li>
+                                <li><a href="/personalEssay">个人随笔</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <a href="/leavemessage-board">给我留言</a>
+                    </li>
+                    <li>
+                        <a href="/aboutgeekcjj">关于梦极客园</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="#">消息 <span class="badge">42</span></a></li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">GEEKCJJ<span class="caret"></span></a>
+                        <ul class="dropdown dropdown-menu navbar_ul">
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="#">我的收藏</a></li>
+                            <li><a href="#">账号设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse animated fadeInDown" id="collapse_searche_div">
+                <div class="search_bar5">
+                    <form>
+                        <input type="text" class="form-control" placeholder="请输入您要搜索的内容...">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="banner_bar">
+    	<div class="container">
+    		<div id="banner_bar_label">
+			  <a href="#">格物生活</a>
+			</div>
+    	</div>
+    </div>
+    <div class="container-article">
+        <div class="container">
+            <section class="row">
+                <div class="">
+                    <div class="col-lg-9 col-md-9 animated slideInLeft">
+                        <div class="article-list">
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <a href="#">
+                                                <img src="images/IMG_0541.JPG" />
+                                            </a>
+                                            <!-- class="animated hover_" data-in="swing" data-out="pulse" -->
+                                            <div class="overlay hidden-sm hidden-xs">
+                                                <h2>title</h2>
+                                                <a class="info" href="#">更多</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://market.maikete.com/">《maike市集》</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maikete.com">geekcjj</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="desc">
+                                                市集里最熟悉的陌生人，多年以后，我们又在繁华的市集相遇，伫立对视片刻，便擦肩而过，消失在了人潮中。
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMkJ1bKziaIU3lvAAgAJKmcCvEAALJIAFrDQAACAA8015.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maike.com/detail_379.html">DIV+CSS静态HTML网页设计模板</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maike.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                这个网页设计是否似曾相识，不错就是在《篮球明星网页设计》版本上修改而成的，这款更适合女孩子
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMkJlbKzjiIH0M_AAJdB-7pn-MAALJIwFYdAsAAl0f724.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maike.com/detail_366.html">将网站LOGO放到浏览器地址栏</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maike.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                首先您必须了解什么是icon，所谓的图标（Icon）是一种特殊的图形文件格式，它是以 .ico 作为扩展名。
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMkJlbKzjiIRT2jAAUGaYr8PEsAALJIwFpbtoABQaB552.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maike.com/detail_364.html">专属学生的简单html静态网页模板</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maike.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                该模板为纯html5模板，主题为周末·黑色调，此模板采用黑色为主色，不包含任何服务器端code
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMly12Ng9KIdCjVAAiP30n-S5UAAX2nAKAALIACI_3995.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maike.com/detail_361.html">html个人网页制作源代码</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maike.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                该模板为纯html5模板，主题为周末·黑色调，此模板采用黑色为主色，不包含任何服务器端code
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMlWl0u-KqIAHkyAAP26MoZWWcAAL4jAH0yZ4AA_cA353.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maikete.com/detail_355.html">html5优秀个人博客模板下载</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maikete.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                该模板为纯html5模板，主题为周末·黑色调，此模板采用黑色为主色，不包含任何服务器端code
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="item">
+                                <div class="art-item">
+                                    <div class="left-art-img">
+                                        <div class="art-img">
+                                            <img src="images/ChMlWl0u8vqIF0m2AAlIzzrVVVQAAL4fwAz3oQACUjn017.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="right-art-abstract">
+                                        <div class="art-abstract-flex">
+                                            <div class="title">
+                                                <a href="http://www.maikete.com/detail_346.html">迷你灰MINIGRAY</a>
+                                            </div>
+                                            <div class="base-info">
+                                                <ul>
+                                                    <li class="hidden-xs">
+                                                        <img src="images/mai.png" class="article_user_pic" />
+                                                    </li>
+                                                    <li class="hidden-xs">
+                                                        <a href="http://www.maikete.com">周末</a>
+                                                    </li>
+                                                    <li>
+                                                        2015-04-04
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="desc">
+                                                该模板为纯html5模板，本人很喜欢简洁明了的页面设计，不浮夸，也不冗余，此模板采用黑白为主色
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <aside class="col-lg-3 col-md-3 right animated slideInRight">
+                        <div class="right-fun">
+                            <div class="alert alert-info alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                博主自建并正在使用的书单已经放到
+                                <a title="" href="https://mubu.com/doc/dlGWUevFA" target="_blank" data-original-title="个人书单"
+                                    class="alert-link">
+                                    幕布</a>了，感兴趣的书友可以参考一下。另外，顺便安利一下
+                                <a title="" href="https://mubu.com/inv/44164" target="_blank" data-original-title="注册地址"
+                                    class="alert-link">幕布
+                                </a>这个工具，它可以用来整理思维大纲，自动生成好看的思维导图，你值得拥有！
+                            </div>
+                            <div class="model hidden-xs">
+                                <div class="title">站内搜索</div>
+                                <div class="content">
+                                    <div class="searche_bar7">
+                                        <form>
+                                            <!-- <span class="glyphicon glyphicon-search pull-left"></span> -->
+                                            <input type="text" placeholder="请输入关键词" name="keywords">
+                                            <button type="submit"></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="my-social" class="panel panel-info hidden-xs" style="margin-top: 20px;">
+                                <div class="panel-heading">
+                                    <span class="glyphicon glyphicon-hand-right"></span>&nbsp;我的社交</div>
+                                <div class="">
+                                    <div class="my-social-list">
+                                        <a id="S_ins" title="Instagram" target="_blank" href="https://www.instagram.com/geekcjj/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="Instagram">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                        <a id="s_douban" title="新浪微博" target="_blank" href="https://www.weibo.com/u/5373856458"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="新浪微博">
+                                            <i class="fa fa-weibo"></i>
+                                        </a>
+                                        <a id="s_douban" title="豆瓣" target="_blank" href="https://www.douban.com/people/geekcjj/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="豆瓣">
+                                            <i class="fa fa-dashcube"></i>
+                                        </a>
+                                        <a id="s_qq_music" title="qq音乐" target="_blank"
+                                            href="https://y.qq.com/portal/profile.html?uin=oKSFNKC57KvA7c**" data-toggle="tooltip"
+                                            data-placement="bottom" data-original-title="qq音乐">
+                                            <i class="fa fa-music"></i>
+                                        </a>
+                                        <a id="s_email" title="邮箱" target="_blank" href="mailto:geekcjj@gmail.com" data-toggle="tooltip"
+                                            data-placement="bottom" data-original-title="EMAIL">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </a>
+                                        <a id="s_github" title="GitHub" target="_blank" href="https://github.com/geekcjj"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="GITHUB">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                        <a id="s_gitee" title="Gitee码云" target="_blank" href="https://gitee.com/geekcjj"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="码云">
+                                            <i class="fa fa-git"></i>
+                                        </a>
+                                        <a id="s_rss" title="RSS订阅" target="_blank" href="http://www.zifangsky.cn/feed/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="RSS">
+                                            <i class="fa fa-rss-square"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="geekcjj-tool" class="panel panel-info hidden-xs" style="margin-top: 20px;">
+                                <div class="panel-heading">
+                                    <span class="glyphicon glyphicon-hand-right"></span>&nbsp;我是GEEKCJJ</div>
+                                <div class="">
+                                    <div class="my-blog-tool">
+                                        <a id="S_ins" title="Instagram" target="_blank" href="https://www.instagram.com/geekcjj/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="Instagram">
+                                            <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                                        </a>
+                                        <a id="s_douban" title="新浪微博" target="_blank" href="https://www.weibo.com/u/5373856458"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="新浪微博">
+                                            <i class="fa fa-weibo fa-lg"></i>
+                                        </a>
+                                        <a id="s_douban" title="豆瓣" target="_blank" href="https://www.douban.com/people/geekcjj/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="豆瓣">
+                                            <i class="fa fa-dashcube fa-lg"></i>
+                                        </a>
+                                        <a id="s_qq_music" title="qq音乐" target="_blank"
+                                            href="https://y.qq.com/portal/profile.html?uin=oKSFNKC57KvA7c**" data-toggle="tooltip"
+                                            data-placement="bottom" data-original-title="qq音乐">
+                                            <i class="fa fa-music fa-lg"></i>
+                                        </a>
+                                        <a id="s_email" title="邮箱" target="_blank" href="mailto:geekcjj@gmail.com" data-toggle="tooltip"
+                                            data-placement="bottom" data-original-title="EMAIL">
+                                            <i class="fa fa-envelope-o fa-lg"></i>
+                                        </a>
+                                        <a id="s_github" title="GitHub" target="_blank" href="https://github.com/geekcjj"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="GITHUB">
+                                            <i class="fa fa-github fa-lg"></i>
+                                        </a>
+                                        <a id="s_gitee" title="Gitee码云" target="_blank" href="https://gitee.com/geekcjj"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="码云">
+                                            <i class="fa fa-git fa-lg"></i>
+                                        </a>
+                                        <a id="s_rss" title="RSS订阅" target="_blank" href="http://www.zifangsky.cn/feed/"
+                                            data-toggle="tooltip" data-placement="bottom" data-original-title="RSS">
+                                            <i class="fa fa-rss-square fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" style="margin-top:20px;">
+                                <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                    <span class="glyphicon glyphicon-th"></span>&nbsp;分类</div>
+                                <div class="panel-body" id="cat-list">
+                                    <a style="margin-bottom: 3px;" class="btn btn-default btn-sm">Linux系统编程<span
+                                            class="badge badge-info"></span>
+                                    </a>
+                                    <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Python<span
+                                            class="badge badge-info"></span>
+                                    </a>
+                                    <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Django<span
+                                            class="badge badge-info"></span>
+                                    </a>
+                                    <a style="margin-bottom: 3px" class="btn btn-default btn-sm">深度学习<span class="badge badge-info"></span>
+                                    </a>
+                                    <a style="margin-bottom: 3px" class="btn btn-default btn-sm">MySql<span class="badge badge-info"></span>
+                                    </a>
+                                    <a style="margin-bottom: 3px" class="btn btn-default btn-sm">生活<span class="badge badge-info"></span>
+                                        <!-- type="button" -->
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default
+                                                            recommendlist" style="margin-top:20px;">
+                                <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                    <span class="glyphicon glyphicon-list"></span>&nbsp;快捷菜单</div>
+                                <div class="panel-body">
+                                    <!-- <div class="model recommend">
+                                                                						                            <div class="title">热门推荐</div>						                            <div class="content"> -->
+                                    <div class="fastmenu">
+                                        <span><a href="http://www.maikete.com">文章博客</a></span>
+                                        <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                        <span><a href="http://www.maikete.com">资源文件</a></span>
+                                        <span><a href="http://www.maikete.com">格物生活</a></span>
+                                        <span><a href="http://www.maikete.com">给我留言</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="model">
+                                                        <div class="title">快捷菜单</div>
+                                                        <div class="menu">
+                                                            <span><a
+                                                                        href="http://www.maikete.com">文章博客</a></span>
+                                                            <span><a
+                                                                        href="http://www.maikete.com">新闻资讯</a></span>
+                                                            <span><a
+                                                                        href="http://www.maikete.com">资源文件</a></span>
+                                                            <span><a 
+                                                                        href="http://www.maikete.com">格物生活</a></span>
+                                                            <span><a
+                                                                        href="http://www.maikete.com">给我留言</a></span>
+                                                        </div>
+                                                    </div> -->
+                    
+                            <div class="panel panel-default" style="margin-top:20px;">
+                    
+                                <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                    <span class="glyphicon glyphicon-th-list"></span>&nbsp;热门文章</div>
+                                <div class="panel-body recommendlist">
+                                    <!-- <div class="model recommend">
+                                						                            <div class="title">热门推荐</div>
+                                						                            <div class="content"> -->
+                                    <p>
+                                        <a href="http://www.youtiy.com/detail_317.html">dw个人网页模板作业成品</a>
+                                    </p>
+                                    <p>
+                                        <a href="http://www.youtiy.com/detail_382.html">HTML个人简历源代码</a>
+                                    </p>
+                                    <p>
+                                        <a href="http://www.youtiy.com/detail_381.html">自我介绍个人网页设计模板</a>
+                                    </p>
+                                    <p>
+                                        <a href="http://www.youtiy.com/detail_379.html">DIV+CSS静态HTML网页设计模板</a>
+                                    </p>
+                                    <p>
+                                        <a href="http://www.youtiy.com/detail_377.html">一个完整的html网页设计代码免费下载</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </div>
+	<a class="btn btn-default" id="backToTop" href="#" role="button" style="position:fixed; right:9px; bottom:250px; background-color:#CCC;display: none; ">
+		<span class="glyphicon glyphicon-arrow-up"></span>
+	</a>
+    <div class="friendlink_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="friendlink_title"><label>友情链接:</label></div>
+                    <div class="friendlink_content" id="friendlink_content">
+                        <a class="friendlink_a" href="https://www.maikete.xyz">麦科特</a><a class="friendlink_a"
+                            href="https://www.chitang.club">小池塘</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <h2>GEEKCJJ<span style="color:#FF6347;">'S</span> 梦极客园</h2> -->
+                    <p>由<a href="http://www.maikete.xyz" target="_blank"
+                            style="color:white;text-decoration:underline;">GEEKCJJ</a>提供技术支持</p>
+                    <p>© 2018－2019 maikete.xyz, all rights reserved &nbsp;<a href="http://beian.miit.gov.cn"
+                            target="_blank">苏ICP备19023267号-3</a></p>
+                    <p><a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19023267号-3 &amp;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/html5.js" type="text/javascript"></script>
+    <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
+    <script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/wow.min.js" type="text/javascript"></script>
+    <script>
+        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+            new WOW().init();
+        };
+    </script>
+    <script type="text/javascript">
+
+		//$(function(){});
+		//$(document).ready(function(e) {});
+        $(document).ready(function(e) {
+            // var offset = 890;
+            // $(window).on('scroll', function() {
+            //     if ($(this).scrollTop() > offset) {
+            //         $('.recommendlist').css('position', 'fixed');
+            //         $('.recommendlist').css('top', '0px');
+            //     } else {
+            //         $('.recommendlist').css('position', '');
+            //     }
+            // });
+            $(".navbar_ul li").click(function() {
+				//alert("点击了按钮");
+		        $(this).siblings('li').removeClass('menuactive');  
+		        $(this).addClass('menuactive');                          
+		    });
+            $(window).on('scroll', function() {
+            	var t = document.documentElement.scrollTop || document.body.scrollTop;
+            	console.log(t);
+            	//$(this).scrollTop()
+                if (t > 150) {
+                    // $('#navigator_bar').css('position', 'fixed');
+                    // $('#navigator_bar').css('top', '0px');
+                    $('#navigator_bar').attr("class", 'navbar navbar-default navbar-static-top navbar-fixed-top animated slideInDown');
+                    $(".banner_bar").css("margin-top", '55px');
+                    //$('#navigator_bar').css('');
+                } else {
+                    $('#navigator_bar').attr("class", 'navbar navbar-default navbar-static-top');
+                    $(".banner_bar").css("margin-top", '0px');
+                    //$('#navigator_bar').css('position', '');
+                }
+                if ($(window).scrollTop()>750){
+                    $("#backToTop").fadeIn(1500);
+                }
+                else
+                {
+                    $("#backToTop").fadeOut(1500);
+                }
+            });
+            /* $.scrollUp({
+	            scrollName:"scrollUp",
+	            topDistance:"300",
+	            topSpeed:300,
+	            animation:"fade",
+	            animationInSpeed:200,
+	            animationOutSpeed:200,
+	            scrollText:'<i class="fa fa-angle-up"></i>',
+	            activeOverlay:!1
+            }); */
+            // $.getJSON("/blog/indexGallery/allIndexGallery",{}, function(data) {
+            //     $('#slider_ul_img').html('');
+            //     $('#slider_ul_title').html('');
+            //     $.each(data.data, function () {
+            //         //this.isAdvertise
+            //         var slider_img = '<li><a target="_blank" href="'+(this.imgLink==null?'#':this.imgLink)+'" ><img src="'+this.sliderImg+'" /></a></li>';
+            //         var slider_title = '<li>'+this.imgDescription+'</li>';
+            //         //把每次遍历的一行数据 添加到ul中 
+            //         $("#slider_ul_img").append(slider_img);
+            //         $("#slider_ul_title").append(slider_title);
+            //     });
+            //     jQuery(".maike_slider .bd li").first().before(jQuery(".maike_slider .bd li").last());
+            //     jQuery(".maike_slider .hd li").first().before(jQuery(".maike_slider .hd li").last());
+            //     jQuery(".maike_slider").hover(function () {
+            //         jQuery(this).find(".arrow").stop(true, true).fadeIn(300)
+            //     }, function () {
+            //         jQuery(this).find(".arrow").fadeOut(300)
+            //     });
+            //     jQuery(".maike_slider").slide({
+            //         titCell: ".hd ul",
+            //         mainCell: ".bd ul",
+            //         effect: "leftLoop",
+            //         autoPlay: true,
+            //         vis: 3,
+            //         autoPage: true,
+            //         trigger: "mouseover"
+            //     });
+            // });
+            $.ajax({
+                url: "/category/blog/getAllCategoryCount",
+                data: {},
+                type: "get",
+                success: function (data) {
+                    // if (JSON.parse(data).state === 404 || JSON.parse(data).state === 202 || userinfo.UserPhoneNum === '86//') {
+                    //     alert("验证码发送失败")
+                    // } else {
+                    //     alert("验证码发送成功，请耐心等待")
+                    // }
+                    $('#cat-list').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var categorylist = '<a class="btn btn-default btn-sm">'+this.catName+'&nbsp;<span class="badge badge-info">'+this.artcount+'</span>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#cat-list').append(categorylist);
+                    });
+                    var tags_a = $("#cat-list a");
+                    tags_a.each(function () {
+                        var x = 9;
+                        var y = 0;
+                        var rand = parseInt(Math.random() * (x - y + 1) + y);
+                        //$(this).addClass("tags"+rand);
+                        $(this).css("color", getRandomColor2);
+                        $(this).css("font","bold");
+                        $(this).css("font-family","楷体")
+                    });
+                },
+                error: function () {
+                    console.log("发送失败");
+                }
+            });
+            $.ajax({
+			    type: "GET", 
+			    url: "/friendLink/blog/blogFrienfLink",
+			    data: {}, //可选参数
+			    dataType: "json",
+			    success: function(data){
+			    	$('#friendlink_content').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var linklist = '<a class="friendlink_a" href="'+this.linkUrl+'" title="'+this.linkName+'">'+this.linkName+'</a>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#friendlink_content').append(linklist);
+                    });
+			    console.log(data);
+			    	console.log(data);
+			    } //可选参数
+			});
+        });
+        function rgb() {//rgb颜色随机
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                var rgb = '(' + r + ',' + g + ',' + b + ')';
+                return rgb;
+            }
+            function color16() {//十六进制颜色随机
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                var color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+                return color;
+            }
+            //颜色对象
+            function getRandomColor1() {
+                this.r = Math.floor(Math.random() * 255);
+                this.g = Math.floor(Math.random() * 255);
+                this.b = Math.floor(Math.random() * 255);
+                this.color = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',0.8)';
+            }
+            var getRandomColor2 = function () {
+                return '#' + (function (color) {
+                    return (color += '0123456789abcdef'[Math.floor(Math.random() * 16)])
+                        && (color.length == 6) ? color : arguments.callee(color);
+                })('');
+            }
+            //方法三
+            function getRandomColor3() {
+                return '#' + Math.floor(Math.random() * 256).toString(10);
+            }
+            //方法四
+            function getRandomColor4() {
+                return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+            }
+            //方法五
+            function getRandomColor5() {
+                return '#' + Math.random().toString(16).slice(2, 8)
+            }
+    </script>
+    <script src="js/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+		document.body.oncopy = function () {
+		swal("复制成功！", "若要转载请务必保留原文链接，申明来源，谢谢合作！By:梦极客园","success");
+		addLink();
+		/* setTimeout( function () {
+			//window.event.returnValue = false;
+			var text = window.clipboardData.getData("text"); 
+			if (text) {
+			text = text + "\r\n本篇文章来源于google( www.google.com) 原文链接："+location.href;
+			clipboardData.setData("text", text); 
+			} 
+			},100); */
+		}
+		function addLink() {
+		    var body_element = document.body;
+		    var selection;
+		    selection = window.getSelection();
+		    if (window.clipboardData) { // Internet Explorer
+		        var pagelink ="\r\n\r\n 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        window.clipboardData.setData ("Text", copytext);
+		        return false;
+		    } else {
+		        var pagelink = " 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        var newdiv = document.createElement('div');
+		        newdiv.style.position='absolute';
+		        newdiv.style.left='-99999px';
+		        body_element.appendChild(newdiv);
+		        newdiv.innerHTML = copytext;
+		        selection.selectAllChildren(newdiv);
+		        window.setTimeout(function() {
+		        body_element.removeChild(newdiv);
+		        },0);
+		    }
+		}
+		//防止页面被iframe调用 
+		//(function(window) { if (window.location != window.top.location) { window.top.location = window.location; }})(this);
+	</script>
+	<script type="text/javascript">
+	/* 鼠标特效 */
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+	 $("body").click(function(e) {
+	 var a = new Array("三民主义","民族","民权","民生");
+	 var $i = $("<span/>").text(a[a_idx]);
+	 a_idx = (a_idx + 1) % a.length;
+	 var x = e.pageX,
+	 y = e.pageY;
+	 $i.css({
+	 "z-index": 9999999,
+	 "top": y - 20,
+	 "left": x,
+	 "position": "absolute",
+	 "font-weight": "bold",
+	 "color": "#ff6651"
+	 });
+	 $("body").append($i);
+	 $i.animate({
+	 "top": y - 180,
+	 "opacity": 0
+	 },
+	 1500,
+	 function() {
+	 $i.remove();
+	 });
+	 });
+	});
+	</script>
+</body>
+
+</html>

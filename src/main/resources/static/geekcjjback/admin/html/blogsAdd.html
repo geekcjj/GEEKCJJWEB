@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <!-- <link rel="stylesheet" href="../kindeditor/themes/default/default.css" media="all"> -->
+    <link rel="stylesheet" href="../editormd/css/editormd.css" />
+    <link rel="stylesheet" href="../editormd/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/simditor.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/app.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/simditor-emoji.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/simditor-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../simditor/styles/simditor-fullscreen.css" />
+    <link rel="stylesheet" type="text/css" href="../handyeditor/skin/HandyEditor.css" />
+    <link rel="stylesheet" type="text/css" href="../handyeditor/external/css/HandyEditor.css" />
+    <!-- Bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="../summernote/summernote.css" rel="stylesheet">
+    <link href="../summernote/lang/summernote-zh-CN.js" rel="stylesheet">
+    <script src="../summernote/summernote.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script> -->
+    <!-- <script src="../ckeditor/ckeditor.js" type="text/javascript" charset="utf-8" async defer></script> -->
+    <!-- <script src="../kindeditor/kindeditor-all.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="../kindeditor/lang/zh-CN.js" type="text/javascript" charset="utf-8" async defer></script> -->
+    <script type="text/javascript" src="../simditor/scripts/mobilecheck.js"></script>
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend style="text-align: center">GEEKCJJ博客</legend>
+</fieldset>
+<div style="padding: 20px; background-color: #F2F2F2;">
+  <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-header">博客新增</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文章标题"
+                               class="layui-input">
+                    </div>
+                </div>
+                <!--橙色分割线-->
+                <hr class="layui-bg-orange">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章分类名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文章分类名"
+                               class="layui-input">
+                    </div>
+                </div>
+                <!--蓝色分割线-->
+                <hr class="layui-bg-blue">
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="layui-tab">
+  <ul class="layui-tab-title">
+    <li class="layui-this">MarkDown富文本编辑器</li>
+    <li>Simditor富文本编辑器</li>
+    <!-- <li>KindEditor富文本编辑器</li> -->
+    <li>HandyEditor富文本编辑器</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+        <!-- <div id="summernote"><p>Hello Summernote</p></div> -->
+        <!-- <form method="post">
+          <textarea id="summernote" name="editordata"></textarea>
+        </form> -->
+        <!-- <form> -->
+          <div style="padding: 20px; background-color: #F2F2F2;overflow-y: scroll !important;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <!--存放内容-->
+                            <div id="txt-editormd">
+                              <textarea style="display:none;"></textarea>
+                            </div>
+                            <div class="layui-button-inline" id="markdown_md_button" style="margin-top: 20px;">
+                                <button class="layui-btn site-demo-layedit" onclick="markdown_md_publish()" data-type="markdown_md_publish">发布</button>
+                                <button class="layui-btn site-demo-layedit" onclick="markdown_md_mdcontent()" data-type="markdown_md_mdcontent">获取MarkDown源码</button>
+                                <button class="layui-btn site-demo-layedit" onclick="markdown_md_htmltext()" data-type="markdown_md_htmltext">获取HTML内容</button>
+                                <button class="layui-btn site-demo-layedit" onclick="markdown_md_previewhtml()" data-type="markdown_md_previewhtml">获取预览HTML</button>
+                                <button class="layui-btn layui-btn-radius" id="goto-first-line-btn">Goto first line</button>
+                                <button class="layui-btn layui-btn-radius" id="goto-line-btn">定位到</button>
+                                <input type="text" required  lay-verify="required" placeholder="line..." autocomplete="off" id="line_number" class="layui-input" style="width:40px;">
+                                <button class="layui-btn layui-btn-radius" id="goto-last-line-btn">Goto last line</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <!-- </form> -->
+    </div>
+    <div class="layui-tab-item">
+        <!-- <div name="content" id="editor">
+            <p></p>
+        </div> -->
+        <div style="padding: 20px; background-color: #F2F2F2;">
+          <div class="layui-row layui-col-space15">
+              <div class="layui-col-md12">
+                  <div class="layui-card">
+                      <div class="layui-card-body">
+                          <!--存放内容-->
+                          <div id="simditor_div" style="/*开启滚动条*/overflow-y: scroll !important;/*设置高度*/min-height: 400px !important;max-height: 460px !important;">
+                              <!-- style="/*开启滚动条*/overflow-y: scroll !important;/*设置高度*/height: 440px !important;" -->
+                              <textarea id="sim_editor" placeholder="开始写文章..." data-autosave="sim_editor-content"></textarea>
+                          </div>
+                          <div class="site-demo-button" style="margin-top: 20px;">
+                              <button class="layui-btn site-demo-layedit" onclick="sim_editor_publish()" data-type="sim_editor_publish">发布</button>
+                              <button class="layui-btn site-demo-layedit" onclick="sim_editor_htmlcontent()" data-type="sim_editor_htmlcontent">获取HTML内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="sim_editor_text()" data-type="sim_editor_text">获取纯文本内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="sim_editor_selection()" data-type="sim_editor_selection">获取编辑器选中内容</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- <div class="layui-tab-item">
+        <form method="post">
+          <textarea id="kindeditor_txt" name="kindeditor_txt" style="width:95%;height:35px;margin:0 auto;visibility:hidden;display: block;"></textarea>
+        </form>
+    </div> -->
+    <div class="layui-tab-item">
+      <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card" style="overflow-y:scroll !important;">
+                    <div class="layui-card-body">
+                        <!--存放内容-->
+                        <div id="handyeditor_div">
+                            <textarea id="handyeditor_editor" name="editor" style="display: none;"></textarea>
+                        </div>
+                        <div class="site-demo-button" style="margin-top: 20px;">
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_publish()" data-type="handyeditor_publish">发布</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_htmlcontent()" data-type="handyeditor_htmlcontent">获HTML内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_text()" data-type="handyeditor_text">获取纯文本内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_selection()" data-type="handyeditor_selection">获取编辑器选中内容</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="../editormd/editormd.min.js"></script>
+<script src="../editormd/katex.min.js"></script>
+<script type="text/javascript" src="../simditor/scripts/module.js"></script>
+<script type="text/javascript" src="../simditor/scripts/hotkeys.js"></script>
+<script type="text/javascript" src="../simditor/scripts/uploader.js"></script>
+<script type="text/javascript" src="../simditor/scripts/simditor.js"></script>
+<!-- <script type="text/javascript" src="../simditor/scripts/simditor-dropzone.js"></script> -->
+<script type="text/javascript" src="../simditor/scripts/simditor-emoji.js"></script>
+<script type="text/javascript" src="../simditor/scripts/simditor-autosave.js"></script>
+<script type="text/javascript" src="../simditor/scripts/marked.js"></script>
+<script type="text/javascript" src="../simditor/scripts/to-markdown.js"></script>
+<script type="text/javascript" src="../simditor/scripts/simditor-markdown.js"></script>
+<script type="text/javascript" src="../simditor/scripts/simditor-fullscreen.js"></script>
+<script src="../handyeditor/HandyEditor.min.js"></script>
+<script src="../handyeditor/lang/zh-jian/zh-jian.js"></script>
+<script>
+    var $preview, sim_editor, sim_mobileToolbar, sim_alltoolbar,markdown_md_editor;
+    //toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote',
+    //'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+    //Simditor.locale = 'en-US';
+    sim_alltoolbar=[
+      'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale',
+      'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link',
+      'image', 'hr', '|', 'alignment','|','indent','outdent','|','emoji','|','fullscreen','markdown'
+    ];
+    sim_mobileToolbar = ["title","bold", "underline", "strikethrough", "color", "ul", "ol"];
+    $(function() {
+        // $.get("test.md", function(md){
+        //             testEditor = editormd("test-editormd", {
+        //             }
+        // });
+        markdown_md_editor = editormd("txt-editormd", {
+            placeholder:'开始书写...',  //默认显示的文字，这里就不解释了
+            width  : "100%",
+            height : "450",
+            path   : "../editormd/lib/",
+            //markdown: md,
+            codeFold: true,
+            htmlDecode: "style,script,iframe",
+            tex : false,
+            emoji: true,
+            taskList: true,
+            flowChart: false,
+            sequenceDiagram: true,
+            saveHTMLToTextarea: false,
+            flowChart: true, // 开启流程图支持，默认关闭
+            watch:true,
+        });
+        // var active = {
+        //     markdown_md_mdcontent: function () {
+        //         alert(markdown_md_editor.getMarkdown()); //获取编辑器内容
+        //     }
+        //     , markdown_md_htmltext: function () {
+        //         alert(markdown_md_editor.getHTML()); //获取编辑器纯文本内容
+        //     }
+        //     , markdown_md_previewhtml: function () {
+        //         alert(markdown_md_editor.getPreviewedHTML());
+        //     }
+        // };
+        // $('#markdown_md_button').on('click', function () {
+        //     var type = $(this).data('type');
+        //     active[type] ? active[type].call(this) : '';
+        // });
+        if (mobilecheck()) {
+          sim_alltoolbar = sim_mobileToolbar;
+        }
+        sim_editor = new Simditor({
+          toolbar: sim_alltoolbar,
+          emoji: {
+        		imagePath: '../simditor/images/emoji/'
+        	},
+          textarea: $('#sim_editor'),
+          tabIndent: true,
+          //optional options
+          imageButton: ['upload','external'],
+          defaultImage:'../../images/bloglogo.png',
+          upload: {
+            url: '/article/upload',
+            params: {},
+            fileKey: 'file',
+            leaveConfirm: '正在上传文件..',
+            connectionCount: 3
+          },
+          pasteImage:true,
+        });
+        $("#goto-line-btn").bind("click", function(){
+            markdown_md_editor.gotoLine(90);
+        });
+
+        $("#goto-first-line-btn").bind("click", function(){
+            markdown_md_editor.gotoLine("first");
+            // or
+            //testEditor.gotoLine(1);
+        });
+
+        $("#goto-last-line-btn").bind("click", function(){
+            markdown_md_editor.gotoLine("last");
+            // or
+            //testEditor.gotoLine(testEditor.cm.lineCount());
+        });
+    });
+    var he = HE.getEditor('handyeditor_editor',{
+      width : '100%',
+      autoHeight : false,
+      autoFloat : false,
+      topOffset : 0,
+      uploadPhoto : true,
+      uploadPhotoHandler : '',
+      uploadPhotoSize : 1024*9,
+      uploadPhotoType : 'gif,png,jpg,jpeg',
+      uploadPhotoSizeError : '不能上传大于9216KB的图片',
+      uploadPhotoTypeError : '只能上传gif,png,jpg,jpeg格式的图片',
+      lang : 'zh-jian',
+      skin : 'HandyEditor',
+      externalSkin : '',
+      item : ['bold','italic','strike','underline','fontSize','fontName','paragraph','color','backColor','|','center','left','right','full',
+      'indent','outdent','|','link','unlink','textBlock','code','selectAll','removeFormat','trash','|','image','expression','subscript',
+      'superscript','horizontal','orderedList','unorderedList','|','undo','redo','|','html','|','about']
+    });
+    function markdown_md_mdcontent(){
+      alert(markdown_md_editor.getMarkdown()); //获取编辑器内容
+    }
+    function markdown_md_htmltext(){
+      alert(markdown_md_editor.getHTML()); //获取编辑器内容
+    }
+    function markdown_md_previewhtml(){
+      alert(markdown_md_editor.getPreviewedHTML()); //获取编辑器内容
+    }
+    function sim_editor_htmlcontent(){
+      alert(sim_editor.getValue());
+    }
+    function handyeditor_htmlcontent(){
+      alert(he.getHtml());
+    }
+    function handyeditor_text(){
+      alert(he.getText());
+    }
+    // layui.use('layedit', function () {
+    //     var layedit = layui.layedit
+    //         , $ = layui.jquery;
+    //     layedit.set({
+    //       uploadImage: {
+    //         url: '' //接口url
+    //         ,type: '' //默认post
+    //       }
+    //     });
+    //     //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+    //     //构建一个默认的编辑器
+    //     var index = layedit.build('LAY_demo1');
+    //
+    //     //编辑器外部操作
+    // });
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+      var element = layui.element;
+
+      //…
+    });
+    //其中的editor是文本输入框(textarea)的id
+    // $(document).ready(function() {
+    //     $('#summernote').summernote(
+    //         {
+    //         lang:"zh-CN",
+    //         placeholder: '输入文章...',
+    //         tabsize: 2,
+    //         height: 400,
+    //     },'undo','redo');
+    // });
+    // var data;
+    // ClassicEditor.create(document.querySelector('#editor'), {
+    //         ckfinder: {
+    //               uploadUrl: '/'
+    //         }
+    //       }
+    // ).then(editor => {
+    //     window.editor = editor;
+    //     data = editor.getData();
+    //     console.log(data);
+    // }).catch(error => {
+    //     console.log(error);
+    // });
+    //简单模式初始化
+    // var editor;
+    // KindEditor.ready(function(K) {
+    //     editor = K.create('#kindeditor_txt', {//'textarea[name="content"]'
+    //         basePath : '../',
+		// 			  pluginsPath : '../kindeditor/plugins/',
+    //         resizeType : 1,
+    //         allowImageUpload : true,
+		// 			  allowImageRemote : true,
+		// 			  allowFileUpload : true,
+		// 			  designMode : true,
+		// 			  allowFileManager : true,
+		// 			  fullscreenMode : false,
+    //         allowPreviewEmoticons : false,
+    //         formatUploadUrl : false,
+		// 			  fullscreenShortcut : false,
+		// 		  	newlineTag : 'p',
+		// 			  pasteType : 1,
+    //         // items : [
+    //         //       'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+    //         //       'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+    //         //       'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+    //         extraFileUploadParams : {
+		// 				'testParam1' : 'a',
+		// 				'testParam2' : 'b'
+  	// 				},
+  	// 				//afterTab : function() {
+  	// 					//editor2.focus();
+  	// 				//},
+  	// 				afterChange : function() {
+  	// 					K('#J_count1').html(this.count());
+  	// 					//console.log('1');
+  	// 				},
+  	// 				afterUpload : function(url, data, name) {
+  	// 					var select = K('#uploadFile')[0];
+  	// 					select.options.add(new Option(url, url));
+  	// 					console.log(data);
+  	// 					console.log(name);
+  	// 				},
+  	// 				afterSelectFile : function(url) {
+  	// 					var select = K('#uploadFile')[0];
+  	// 					select.options.add(new Option(url, url));
+  	// 				},
+  	// 				afterCreate : function() {
+  	// 					//this.loadPlugin('autoheight');
+  	// 				}
+    //     });
+    //});
+</script>
+</body>
+</html>

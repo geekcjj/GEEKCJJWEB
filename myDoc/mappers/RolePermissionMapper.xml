@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.RolePermissionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.RolePermission">
+        <id column="id" property="id" />
+        <result column="permission_name" property="permissionName" />
+        <result column="permission_url" property="permissionUrl" />
+        <result column="permission_type" property="permissionType" />
+        <result column="permission_operate" property="permissionOperate" />
+        <result column="parent_id" property="parentId" />
+        <result column="parent_child_id" property="parentChildId" />
+    </resultMap>
+
+</mapper>

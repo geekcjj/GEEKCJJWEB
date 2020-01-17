@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.LoginLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.LoginLog">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="login_time" property="loginTime" />
+    </resultMap>
+	<select id="listLoginLog" resultType="java.util.Map">
+		select lol.id as logId,lol.login_time as loginTime,bu.username as userName,bu.nickname as nickName,bu.email as userEmail 
+		from login_log lol INNER JOIN blog_user bu on lol.user_id=bu.id ORDER BY lol.login_time desc
+	</select>
+</mapper>

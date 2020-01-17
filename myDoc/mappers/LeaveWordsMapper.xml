@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.LeaveWordsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.LeaveWords">
+        <id column="id" property="id" />
+        <result column="nick_name" property="nickName" />
+        <result column="email" property="email" />
+        <result column="website" property="website" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <result column="lw_type" property="lwType" />
+        <result column="to_user_id" property="toUserId" />
+        <result column="to_nick_name" property="toNickName" />
+        <result column="user_id" property="userId" />
+        <result column="parent_id" property="parentId" />
+    </resultMap>
+
+</mapper>

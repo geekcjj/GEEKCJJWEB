@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<!--            梦极客  |  一个渴望成为全栈工程师的伪程序员       
+    
+                                  _ooOoo_
+                                 o8888888o
+                                 88" . "88	
+                                 (| -_- |)         
+                                 O\  =  /O	
+                              ____/`---'\____	
+                            .'  \\|     |//  `.
+                           /  \\|||  :  |||//  \
+                          /  _||||| -:- |||||-  \
+                          |   | \\\  -  /// |   |
+                          | \_|  ''\---/''  |   |
+                          \  .-\__  `-`  ___/-. /
+                        ___`. .'  /--.--\  `. . __
+                     ."" '<  `.___\_<|>_/___.'  >'"".
+                    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+               ======`-.____`-.___\_____/___.-`____.-'======
+                                  `=---='
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+     -本模板源码由麦客工作室倾尽心血二次美化，望佛祖保佑梦极客园永远无BUG!-
+     
+           -梦极客园邮箱:geekcjj@gmail.com   qq:1789615426 -
+    
+    -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" href="/geekcjjback/images/bloglogo.png" />
+    <title>梦极客园-博客后台管理</title>
+    <link rel="stylesheet" href="/geekcjjback/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">梦极客园-博客后台管理</div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/" target="iframe">前台主页</a></li>
+            <li class="layui-nav-item"><a href="/geekcjjback/admin/html/adminMsg.html" target="iframe">管理员信息</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="#" target="iframe">邮件管理</a></dd>
+                    <dd><a href="#" target="iframe">消息管理</a></dd>
+                    <dd><a href="#" target="iframe">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img id="userPic" src="images/bloglogo.png" class="layui-nav-img">
+                    <span id="userNickName">GEEKCJJ</span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/geekcjjback/admin/html/adminUser.html" target="iframe">基本资料</a></dd>
+                    <dd><a href="/geekcjjback/admin/html/safetySet.html" target="iframe">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/adminLogout" target="_self">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">网站设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/geekcjjback/admin/html/setWeb.html" target="iframe">网站设置</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/indexSliderPicture.html" target="iframe">首页轮播</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/friendlinks.html" target="iframe">友情链接</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/log.html" target="iframe">登入日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/geekcjjback/admin/html/Users.html" target="iframe">用户信息</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/adminUsers.html" target="iframe">管理员信息</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/PwdSet.html" target="iframe">添加管理员</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/PwdSet.html" target="iframe">修改密码</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/leaveWordManage.html" target="iframe">留言管理</a></dd>
+                    </dl>
+                </li>
+				<!-- <li class="layui-nav-item">
+                    <a class="" href="javascript:;">管理员设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/geekcjjback/admin/html/adminUsers.html" target="iframe">管理员信息</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/PwdSet.html" target="iframe">添加管理员</a></dd>
+                    </dl>
+                </li> -->
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">文章管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/geekcjjback/admin/html/blogsAdd.html" target="iframe">新增Blog</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/lifeBlogAdd.html" target="iframe">新增生活Blog</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/techNewAdd.html" target="iframe">新增新闻资讯</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/blogsList.html" target="iframe">查看文章</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/commentMang.html" target="iframe">评论管理</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/sortManager.html" target="iframe">分类管理</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/sortManager.html" target="iframe">标签管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">权限控制</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#" target="iframe">普通用户权限</a></dd>
+                        <dd><a href="#" target="iframe">管理员用户权限</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/welcome.html" target="iframe">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/geekcjjback/login.html">退出系统</a></dd>
+                        <dd><a href="/geekcjjback/admin/html/welcome.html" target="iframe">超链接</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 2px;">
+            <iframe name="iframe" width="100%" frameborder="0" style="min-height:1200px;max-height: 2400px;"
+                    class="xiframe" scrolling="no" src="/geekcjjback/admin/html/welcome.html"></iframe>
+        </div>
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <span style="margin-left: 500px">
+              © 2013－2019 (梦极客园)geekcjj.top, all rights reserved
+        </span>
+
+    </div>
+</div>
+<script src="/geekcjjback/layui/layui.all.js"></script>
+<script src="/geekcjjback/js/jquery-3.4.1.js"></script>
+<script src="/geekcjjback/js/jquery.cookie.js"></script>
+<script>
+	$(function(){
+		//JavaScript代码区域
+	    layui.use('element', function () {
+	        var element = layui.element;
+	
+	    });
+	});
+	var cookieNickName = $.cookie('nickName');
+	var cookieUserName = $.cookie('userName');
+	var cookieUPic = $.cookie('up');
+    console.log(cookieNickName);
+    console.log(cookieUPic);
+    $("#userNickName").html(cookieNickName);
+    $("#userPic").attr('src', cookieUPic);
+	/* var jsonValue = eval("(" + cookieValue + ")");
+	alert(jsonValue); */
+</script>
+</body>
+</html>

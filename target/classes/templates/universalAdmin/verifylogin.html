@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+  <head>
+    
+    <title>adminLogin</title>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<style type="text/css">
+		#verifycode{
+			width:100px;
+			float: left;
+		}
+	</style>
+  </head>
+  
+  <body>
+  <div id="wrapper" class="login-page">
+  <div id="login_form" class="form">
+	<form class="register-form">
+	<h2>用户注册</h2>
+	<input placeholder="用户名" type="text" name="username" />
+	<input placeholder="密码" type="password" name="password"/>
+	<input type="text" placeholder="电子邮件" id="r_emial" />
+	<button id="create">创建账户</button>
+	<p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>
+	</form>
+	<form class="login-form" id="login_form_login">
+	<h2>管理登录</h2>
+	<input type="text" placeholder="用户名" value="" name="username" id="user_name" />
+	<input type="password" placeholder="密码" name="password" id="password" />
+	<div class="layui-form-item">
+    <div class="layui-inline">
+    	<div class="layui-input-inline">
+    	      <input type="text" placeholder="验证码" name="verifycode" id="verifycode" size="4">
+    	</div>
+    	<div class="layui-input-inline">
+    	<img class="layui-form-label" id="verifycodeimg" onclick="changecode()" alt="" src="validcode" height="48" width="100">
+    	</div>
+    </div>
+    <div class="layui-inline">
+    <div class="layui-input-inline">
+    	<label class="message" id="login_rmsg"></label>
+    </div>
+    </div>
+  </div>
+	<button id="login" type="button" onclick="chek_login()">登　录</button>
+	<p class="message">还没有账户? <a href="#">立刻创建</a></p>
+	</form>
+	</div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		function check_login()
+		{
+		 var name=$("#user_name").val();
+		 var pass=$("#password").val();
+		 if(name!="" && pass!="")
+		 {
+		  /* alert("登录成功！");
+		  $("#user_name").val("");
+		  $("#password").val("");
+	       $(location).attr('href', 'index.html'); */
+	       //$("#login_form_login").submit();
+	       var formparam=$("#login_form_login").serialize();
+	       console.log(formparam)
+	       $.ajax({
+　　             url: "loginuser",
+ 　　            data:formparam,
+ 　　            type: "POST",
+ 　　            dataType:'text',
+				async:false, //同步      
+				//数据量大用异步
+ 　　            success:function(data){
+ 					console.log(data)
+                      if(data == '1'){
+                        window.location.href = "main.jsp";
+                      }else if (data == '2') {
+                        $('#login_rmsg').html("<strong>用户名或密码错误！<strong>");
+                      }else if (data == '3') {
+                        $('#login_rmsg').html("<strong>用户名或密码不能为空！<strong>");
+                      }else if (data == '4') {
+                        $('#login_rmsg').html("<strong>验证码不正确！<strong>");
+                      }
+                 }, 
+                 error : function(data) {
+                      alert("服务器出现错误！");
+                 }
+ 　　                 
+            });
+		 }else
+		 {
+		  $("#login_form").removeClass('shake_effect');  
+		  setTimeout(function()
+		  {
+		   $("#login_form").addClass('shake_effect')
+		  },1);  
+		 }
+		}
+		var validcodeimg=document.getElementById("verifycodeimg");
+		/* validcodeimg.onclick=function(){
+			document.getElementById("verifycodeimg").setAttribute('src', 'validcode?time=' + (new Date()).getTime());//把src属性更改为'6.jpg';
+		}; */
+		function changecode(){
+			document.getElementById("verifycodeimg").setAttribute('src', 'validcode?time=' + (new Date()).getTime());//把src属性更改为'6.jpg';
+		}
+		document.onkeydown=function(event){
+			var e = event || window.event || arguments.callee.caller.arguments[0];
+			if(e && e.keyCode==13){ // enter 键
+			//要做的事情
+			check_login();
+			}
+		};
+		function check_register(){
+			var name = $("#r_user_name").val();
+			var pass = $("#r_password").val();
+			var email = $("r_email").val();
+			if(name!="" && pass=="" && email != "")
+			 {
+			  alert("注册成功！");
+			  $("#user_name").val("");
+			  $("#password").val("");
+			 }
+			 else
+			 {
+			  $("#login_form").removeClass('shake_effect');  
+			  setTimeout(function()
+			  {
+			   $("#login_form").addClass('shake_effect')
+			  },1);  
+			 }
+		}
+		$(function(){
+			$("#create").click(function(){
+				check_register();
+				return false;
+			})
+			$("#login").click(function(){
+				check_login();
+				return false;
+			})
+			$('.message a').click(function () {
+			    $('form').animate({
+			        height: 'toggle',
+			        opacity: 'toggle'
+			    }, 'slow');
+			});
+		})
+	</script>
+  </body>
+</html>

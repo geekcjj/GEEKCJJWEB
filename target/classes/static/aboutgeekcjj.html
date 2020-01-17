@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>梦极客园</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="description" content="本站面向全国互联网科技爱好者，是互联网信息资讯共享的友好平台，共享优质的互联网信息资讯、技术文章、源代码项目等……" >
+    <meta name="keywords" content="梦极客园，梦极客园网，源代码,资源下载，免费，互联网信息共享" >
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" >
+    <link rel="shortcut icon" href="images/bloglogo.png" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link href="summernote/summernote.css" rel="stylesheet">
+    <link rel="stylesheet" href="geekcjjback/admin/font-awesome/css/font-awesome.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="images/bloglogo.png" class="top_banner_logo" onmouseover="this.src='images/bloglogo.png'"
+                        onmouseout="this.src='images/bloglogo.png'" />
+                    <span class="logo-text navbar-collapse collapse animated rotateIn">梦极客园</span>
+                </div>
+                <div class="right-block">
+                    <div class="wow pulse bg-yellow" data-wow-delay="0.1s">人生，</div>
+                    <div class="wow rollIn bg-red" data-wow-iteration="1" data-wow-duration="0.5s">就像一盒巧克力，</div>
+                    <div class="wow bounceInRight bg-blue">你永远不知道下一块会是什么味道！</div>
+                    <div class="wow bounceInRight bg-blue">---《阿甘正传》</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default navbar-static-top" id="navigator_bar">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#collapse_searche_div">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#navbar_collapse_div">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">
+                                        <img src="images/mai.png" class="logo_img" onmouseover="this.src='images/mai.jpg'"
+                                            onmouseout="this.src='images/mai.png'" style="width:22px;height:22px;" />
+                                    </a> -->
+                <a class="navbar-brand visible-xs" href="https://www.geekcjj.top/">梦极客园</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar_collapse_div">
+                <ul class="nav navbar-nav navbar-left navbar_ul">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+    
+                    <li>
+                        <a href="/techBlogList">IT技术</a>
+                    </li>
+                    <li>
+                        <a href="/newTalkList">新闻杂谈</a>
+                    </li>
+    
+                    <li>
+                        <a href="/resourceDownload">资源文件</a>
+                    </li>
+    
+                    <li>
+                        <a href="javascript:0;">生活随笔</a>
+                        <div class="itembox">
+                            <ul>
+                                <li><a href="/thinkingLife">格物生活</a></li>
+                                <li><a href="/personalEssay">个人随笔</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <a href="/leavemessage-board">给我留言</a>
+                    </li>
+                    <li class="menuactive">
+                        <a href="/aboutgeekcjj">关于梦极客园</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="#">消息 <span class="badge">42</span></a></li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">GEEKCJJ<span class="caret"></span></a>
+                        <ul class="dropdown dropdown-menu navbar_ul">
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="#">我的收藏</a></li>
+                            <li><a href="#">账号设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse animated fadeInDown" id="collapse_searche_div">
+                <div class="search_bar5">
+                    <form>
+                        <input type="text" class="form-control" placeholder="请输入您要搜索的内容...">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- <form class="navbar-form navbar-right" role="search" id="search_form">
+                																<div class="form-group input-group">
+                																	<input type="text" class="form-control" placeholder="搜搜优秀的技术文章" id="searchArt">
+                																	<span class="input-group-btn">
+                																		<a class="btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+                																	</span>
+                																</div>
+                															</form>
+                															<form class="navbar-form navbar-right" role="search" id="search_news" hidden="hidden">
+                																<div class="form-group input-group">
+                																	<input type="text" class="form-control" placeholder="搜搜科技资讯" id="">
+                																	<span class="input-group-btn">
+                																		<a class="btn btn-default" id=""><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+                																	</span>
+                																</div>
+                															</form>
+                															<form class="navbar-form navbar-right" role="search" id="search_resource" hidden="hidden">
+                																<div class="form-group input-group">
+                																	<input type="text" class="form-control" placeholder="搜搜想要的资源" id="">
+                																	<span class="input-group-btn">
+                																		<a class="btn btn-default" id=""><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+                																	</span>
+                																</div>
+                															</form> -->
+    <!--            梦极客  |  一个渴望成为全栈工程师的伪程序员       
+    
+                                  _ooOoo_
+                                 o8888888o
+                                 88" . "88	
+                                 (| -_- |)         
+                                 O\  =  /O	
+                              ____/`---'\____	
+                            .'  \\|     |//  `.
+                           /  \\|||  :  |||//  \
+                          /  _||||| -:- |||||-  \
+                          |   | \\\  -  /// |   |
+                          | \_|  ''\---/''  |   |
+                          \  .-\__  `-`  ___/-. /
+                        ___`. .'  /--.--\  `. . __
+                     ."" '<  `.___\_<|>_/___.'  >'"".
+                    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+               ======`-.____`-.___\_____/___.-`____.-'======
+                                  `=---='
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+     -本模板源码由麦客工作室倾尽心血二次美化，望佛祖保佑梦极客园永远无BUG!-
+     
+           -梦极客园邮箱:geekcjj@gmail.com   qq:1789615426 -
+    
+    -->
+    <div class="container">
+        <div class="container-content">
+            <section class="row">
+                <div class="col-lg-9 col-md-9 animated slideInLeft">
+	                <div class="article-content">
+                        <div class="article-title">
+	                		<h2>关于梦极客园</h2>
+	                	</div>
+                        <div class="tt">
+                            <label>作者：geekcjj</label> | <label>发布：2019.10.10</label>
+                        </div>
+                        <article>
+                        	<div class="content">
+                            <p>
+                                欢迎来到梦极客园!!!
+                            </p>
+                            <div class="alert alert-info alert-no-margin" role="alert">
+                                <p>
+                                    做政治试卷，是我这辈子，说谎最多的时候。
+
+                                </p>
+                                <p>
+                                    做政治试卷，是我这辈子，说谎最多的时候。
+                                </p>
+                                <p>
+                                    做任何事情一定要坚持下去，总会让你看到，失败的那一天。
+                                </p>
+                            </div>
+                            <p>
+                                我坚信技术改变世界,创新引领生活!
+                            </p>
+                            <div class="alert alert-info alert-no-margin" role="alert">
+                                <p>
+                                    本站是一个技术分享,生活记录,个人随笔,科技杂谈的博客类网站!
+                                </p>
+                                <p>
+                                    软件设计要考虑诸多方面，权衡各种利弊，以设计一个趋于完美的解决方案。在方案未落实之前，这也是争论的焦点，探讨的是方案的可行性，
+                                    然而无论再好的方案都有弊端的，只是众多方案中选优罢了，这点正是本文的主题。程序设计不可能集所有优点于一身，必有牺牲的一面，常常
+                                    因为为了满足准确性，而牺牲了性能，为了满足某些需求，而冗余了代码，甚至入侵了业务也不惜，因此代码是没有双全法的，有得必有失，不必苛求。
+                                </p>
+                                <p>
+                                    代码尚且如此，人生又何尝不是？人生是不完美的，也无法做到十全十美，这不是付出多少的问题，这就是一个真命题，就像地球引力一般的存在，
+                                    再成功的人也有他遗憾的问题，是因为他厚此薄彼的结果，当然厚此薄彼要加上引号，其动机没有不纯，这就是2选1的问题，举个不恰当的例子，一
+                                    个男人有了外遇，被老婆知道了，老婆和情人其实都有一个共同的诉求，就是男人必须在两者之间选择一个，这时男人不管如何做出选择都是痛的，
+                                    如若男人继续做出中庸的选择，那么两头都不讨好，最后只能竹篮打水一场空，两个人都得不到，举这个例子可能不太恰当，但能说明问题所在。
+                                </p>
+                            </div>
+                            <br>
+                            <div class="container-fluid">
+                            	<div class=""></div>
+                            	<div class="row">
+                            		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+	                            		<div class="model">
+				                            <div class="title"><!-- <span class="glyphicon glyphicon-search"></span>&nbsp; -->我的QQ</div>
+				                            <div class="content">
+				                                <img alt="我的QQ" class="qq-image-code" src="images/mysocialQRCode/QQCode.jpg">
+				                            </div>
+				                        </div>
+                            			<!-- <div class="panel panel-info">
+                            				<div class="panel-heading">
+											    <h3 class="panel-title">我的QQ</h3>
+											</div>
+											<div class="panel-body">
+											    <img alt="我的QQ" class="qq-image-code" src="images/mysocialQRCode/QQCode.jpg">
+											</div>
+                            			</div> -->
+                            		</div>
+                            		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            			<div class="model">
+				                            <div class="title"><!-- <span class="glyphicon glyphicon-search"></span>&nbsp; -->我的微信</div>
+				                            <div class="content">
+				                                <img alt="我的微信" class="weixin-image-code" src="images/mysocialQRCode/WexinCode.jpg">
+				                            </div>
+				                        </div>
+                            			<!-- <div class="panel panel-warning">
+                            				<div class="panel-heading">
+											    <h3 class="panel-title">我的微信</h3>
+											</div>
+											<div class="panel-body">
+											    <img alt="我的微信" class="weixin-image-code" src="images/mysocialQRCode/WexinCode.jpg">
+											</div>
+                            			</div> -->
+                            		</div>
+                            	</div>
+                            </div>
+                        </div>
+                        </article>
+                    </div>
+                </div>
+                <aside class="col-lg-3 col-md-3 animated slideInRight">
+                    <div class="right-fun">
+                        <div class="model hidden-xs">
+                            <div class="title"><span class="glyphicon glyphicon-search"></span>&nbsp;站内搜索</div>
+                            <div class="content">
+                                <div class="searche_bar7">
+                                    <form>
+                                        <input type="text" placeholder="请输入关键词" name="crid" />
+                                        <button type="submit"></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" style="margin-top:20px;">
+		                    <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+		                    	<span class="glyphicon glyphicon-th"></span>&nbsp;分类
+		                    </div>
+                            <div class="panel-body" id="cat-list">
+                                <a style="margin-bottom: 3px;" class="btn btn-default btn-sm">Linux系统编程<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Python<span class="badge badge-info"></span>
+                                </a>
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">Django<span class="badge badge-info"></span>
+                                </a>    
+                               	<a style="margin-bottom: 3px" class="btn btn-default btn-sm">深度学习<span class="badge badge-info"></span>
+                                </a>    
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">MySql<span class="badge badge-info"></span>
+                                </a>   
+                                <a style="margin-bottom: 3px" class="btn btn-default btn-sm">生活<span class="badge badge-info"></span><!-- type="button" -->
+                                </a>
+                            </div>
+		                </div>
+                        <div class="panel panel-default recommendlist" style="margin-top:20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                <span class="glyphicon glyphicon-list"></span>&nbsp;快捷菜单
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div class="model recommend">
+                                                                                                                    						                            <div class="title">热门推荐</div>						                            <div class="content"> -->
+                                <div class="fastmenu">
+                                    <span><a href="http://www.maikete.com">文章博客</a></span>
+                                    <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                    <span><a href="http://www.maikete.com">资源文件</a></span>
+                                    <span><a href="http://www.maikete.com">格物生活</a></span>
+                                    <span><a href="http://www.maikete.com">给我留言</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="model">
+                                                <div class="title">快捷菜单</div>
+                                                <div class="menu">
+                                                        <span><a href="http://www.maikete.com">文章博客</a></span>
+                                                        <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                                        <span><a href="http://www.maikete.com">资源文件</a></span>
+                                                        <span><a href="http://www.maikete.com">格物生活</a></span>
+                                                        <span><a href="http://www.maikete.com">给我留言</a></span>
+                                                </div>
+                                                </div> -->
+                        <div class="panel panel-default" style="margin-top:20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001);">
+                                <span class="glyphicon glyphicon-th-list"></span>&nbsp;热门文章
+                            </div>
+                            <div class="panel-body recommendlist">
+                                <!-- <div class="model recommend">
+                            <div class="title">热门推荐</div>
+                            <div class="content"> -->
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_317.html">dw个人网页模板作业成品</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_382.html">HTML个人简历源代码</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_381.html">自我介绍个人网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_379.html">DIV+CSS静态HTML网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_377.html">一个完整的html网页设计代码免费下载</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </div>
+    <div class="friendlink_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="friendlink_title"><label>友情链接:</label></div>
+                    <div class="friendlink_content" id="friendlink_content">
+                        <a class="friendlink_a" href="https://www.maikete.xyz">麦科特</a><a class="friendlink_a"
+                            href="https://www.chitang.club">小池塘</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <h2>GEEKCJJ<span style="color:#FF6347;">'S</span> 梦极客园</h2> -->
+                    <p>由<a href="http://www.maikete.xyz" target="_blank"
+                            style="color:white;text-decoration:underline;">GEEKCJJ</a>提供技术支持</p>
+                    <p>© 2018－2019 maikete.xyz, all rights reserved &nbsp;<a href="http://beian.miit.gov.cn"
+                            target="_blank">苏ICP备19023267号-3</a></p>
+                    <p><a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19023267号-3 &amp;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/html5.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="summernote/summernote.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="summernote/lang/summernote-zh-CN.js" type="text/javascript"></script>
+    <!-- <script src="plugin/SuperSlide/js/jquery.min.js"></script> -->
+    <!-- <script src="js/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="plugin/SuperSlide/js/superslide.2.1.js"></script> -->
+    <script type="text/javascript">
+        if (!/msie [6|7|8|9]/i.test(navigator.userAgent)) {
+            new WOW().init();
+        }
+
+        $(document).ready(function(e) {
+            // var offset = 890;
+            // $(window).on('scroll', function() {
+            //     if ($(this).scrollTop() > offset) {
+            //         $('.recommendlist').css('position', 'fixed');
+            //         $('.recommendlist').css('top', '0px');
+            //     } else {
+            //         $('.recommendlist').css('position', '');
+            //     }
+            // });
+            $(".navbar_ul li").click(function() {
+				//alert("点击了按钮");
+		        $(this).siblings('li').removeClass('menuactive');  
+		        $(this).addClass('menuactive');                          
+		    });
+		    //其中的editor是文本输入框(textarea)的id
+	        $('#summernote').summernote(
+	           	{
+	             lang:"zh-CN",
+	             placeholder: '输入文章...',
+	             tabsize: 2,
+	             height: 400,
+	         	},'undo','redo'
+	         );
+	         var sc=$(document);//得到document文档对象。  
+            window.addEventListener("scroll", function() {
+            	var t = $('body, html').scrollTop();   // 目前监听的是整个body的滚动条距离
+            	console.log(t);
+            	//console.log("宽度:"+sc.length);
+            	//$(this).scrollTop()
+                if (t > 150) {
+                    // $('#navigator_bar').css('position', 'fixed');
+                    // $('#navigator_bar').css('top', '0px');
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top navbar-fixed-top animated slideInDown"
+                    );
+                    $(".container-content").css("margin", "71px auto 0 auto");
+                    //$('#navigator_bar').css('');
+                } else {
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top"
+                    );
+                    $(".container-content").css("margin", "20px auto 0 auto");
+                    //$('#navigator_bar').css('position', '');
+                }
+            });
+			$.ajax({
+                url: "/category/blog/getAllCategoryCount",
+                data: {},
+                type: "get",
+                success: function (data) {
+                    // if (JSON.parse(data).state === 404 || JSON.parse(data).state === 202 || userinfo.UserPhoneNum === '86//') {
+                    //     alert("验证码发送失败")
+                    // } else {
+                    //     alert("验证码发送成功，请耐心等待")
+                    // }
+                    $('#cat-list').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var categorylist = '<a style="margin-bottom: 3px; " class="btn btn-default btn-sm">'+this.catName+'&nbsp;<span class="badge badge-info">'+this.artcount+'</span>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#cat-list').append(categorylist);
+                    });
+                    var tags_a = $("#cat-list a");
+                    tags_a.each(function () {
+                        var x = 9;
+                        var y = 0;
+                        var rand = parseInt(Math.random() * (x - y + 1) + y);
+                        //$(this).addClass("tags"+rand);
+                        $(this).css("color", getRandomColor2);
+                        $(this).css("font","bold");
+                        $(this).css("font-family","楷体")
+                    });
+                },
+                error: function () {
+                    console.log("发送失败");
+                }
+            });
+            $.ajax({
+			    type: "GET", 
+			    url: "/friendLink/blog/blogFrienfLink",
+			    data: {}, //可选参数
+			    dataType: "json",
+			    success: function(data){
+			    	$('#friendlink_content').html('');
+                    $.each(data.data, function () {
+                        //this.catId,this.catCode,this.catType,this.artcount
+                        var linklist = '<a class="friendlink_a" href="'+this.linkUrl+'" title="'+this.linkName+'">'+this.linkName+'</a>';
+                        //把每次遍历的一行数据 添加到 div中 
+                        $('#friendlink_content').append(linklist);
+                    });
+			    console.log(data);
+			    	console.log(data);
+			    } //可选参数
+			});
+        });
+        function rgb(){//rgb颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var rgb = '('+r+','+g+','+b+')';
+			return rgb;
+		}
+		function color16(){//十六进制颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+			return color;
+		}
+		//颜色对象
+		function getRandomColor1(){
+		    this.r = Math.floor(Math.random()*255);
+		    this.g = Math.floor(Math.random()*255);
+		    this.b = Math.floor(Math.random()*255);
+		    this.color = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)';
+		}
+		var getRandomColor2 = function(){    
+		    return  '#' + (function(color){    
+		         return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])    
+		         && (color.length == 6) ?  color : arguments.callee(color);    
+		    })('');    
+		}
+		//方法三
+		function getRandomColor3(){
+		   	return '#'+Math.floor(Math.random()*256).toString(10);
+		}
+		//方法四
+		function getRandomColor4(){
+		    return '#'+Math.floor(Math.random()*0xffffff).toString(16);
+		}
+		//方法五
+		function getRandomColor5(){
+		    return  '#'+Math.random().toString(16).slice(2,8)
+		}
+    </script>
+    <script src="js/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+		document.body.oncopy = function () {
+		swal("复制成功！", "若要转载请务必保留原文链接，申明来源，谢谢合作！By:梦极客园","success");
+		addLink();
+		/* setTimeout( function () {
+			//window.event.returnValue = false;
+			var text = window.clipboardData.getData("text"); 
+			if (text) {
+			text = text + "\r\n本篇文章来源于google( www.google.com) 原文链接："+location.href;
+			clipboardData.setData("text", text); 
+			} 
+			},100); */
+		}
+		function addLink() {
+		    var body_element = document.body;
+		    var selection;
+		    selection = window.getSelection();
+		    if (window.clipboardData) { // Internet Explorer
+		        var pagelink ="\r\n\r\n 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        window.clipboardData.setData ("Text", copytext);
+		        return false;
+		    } else {
+		        var pagelink = " 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        var newdiv = document.createElement('div');
+		        newdiv.style.position='absolute';
+		        newdiv.style.left='-99999px';
+		        body_element.appendChild(newdiv);
+		        newdiv.innerHTML = copytext;
+		        selection.selectAllChildren(newdiv);
+		        window.setTimeout(function() {
+		        body_element.removeChild(newdiv);
+		        },0);
+		    }
+		}
+		//防止页面被iframe调用 
+		//(function(window) { if (window.location != window.top.location) { window.top.location = window.location; }})(this);
+	</script>
+	<script type="text/javascript">
+	/* 鼠标特效 */
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+	 $("body").click(function(e) {
+	 var a = new Array("三民主义","民族","民权","民生");
+	 var $i = $("<span/>").text(a[a_idx]);
+	 a_idx = (a_idx + 1) % a.length;
+	 var x = e.pageX,
+	 y = e.pageY;
+	 $i.css({
+	 "z-index": 9999999,
+	 "top": y - 20,
+	 "left": x,
+	 "position": "absolute",
+	 "font-weight": "bold",
+	 "color": "#ff6651"
+	 });
+	 $("body").append($i);
+	 $i.animate({
+	 "top": y - 180,
+	 "opacity": 0
+	 },
+	 1500,
+	 function() {
+	 $i.remove();
+	 });
+	 });
+	});
+	</script>
+</body>
+
+</html>
