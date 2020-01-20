@@ -67,7 +67,7 @@
                     item += '	<div class="comment-content">';
                     item += '		<div class="comment-info">';
                     item += '			<a> ' + v.nickName + ' </a>';
-                    item += '			<span>' + v.createTime + ' </span>';
+                    item += '			<span>' + resolvingDate(v.createTime) + ' </span>';
                     item += '		</div>';
                     item += '		<div class="comment-text"><span class="replyuser">'+(v.parentId==0?'':'@'+v.toNickName+':')+'</span>' + v.content + ' </div>';
                     item += '		<div class="comment-action">';
@@ -103,7 +103,40 @@
                 // 初始化html之后绑定点击事件
                 this.addEvent();
             };
-
+            //转换后台返回的这种时间格式2019-04-24T02:30:00.000+0000
+    		function resolvingDate(date){
+    		  var times='';
+    		  //date是传入的时间
+    		  var d = new Date(date);
+    		  var month = (d.getMonth() + 1) < 10 ? '0'+(d.getMonth() + 1) : (d.getMonth() + 1);
+    		  var day = d.getDate()<10 ? '0'+d.getDate() : d.getDate();
+    		  var hours = d.getHours()<10 ? '0'+d.getHours() : d.getHours();
+    		  var min = d.getMinutes()<10 ? '0'+d.getMinutes() : d.getMinutes();
+    		  var sec = d.getSeconds()<10 ? '0'+d.getSeconds() : d.getSeconds();
+    		  var nowd=new Date();
+    		  var nowmonth= (nowd.getMonth() + 1) < 10 ? '0'+(nowd.getMonth() + 1) : (nowd.getMonth() + 1);
+    		  //times=d.getFullYear() + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + sec;
+    		  if(nowd.getFullYear()-d.getFullYear()>=1){
+    			  times=d.getFullYear() + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + sec;
+    		  }else if(nowmonth-month>6){
+    			  times=month+"月"+day+"日";
+    		  }else if((nowmonth-month)<=6&&(nowmonth-month)>=1){
+    			  times=nowmonth-month+"个月前"
+    		  }else if(nowd.getDate()-day>0){
+//    			  console.log(nowd.getDate()+"日");
+//    			  console.log(day+"日");
+    			  times=nowd.getDate()-day+"天前";
+    		  }else if(nowd.getHours()-hours>=1){
+    			  times=nowd.getHours()-hours+"小时前";
+    		  }else if(nowd.getMinutes()-min>0){
+    			  times=nowd.getMinutes()-min+"分钟前";
+    		  }else if(nowd.getSeconds()-sec>0){
+    			  times=nowd.getSeconds()-sec+"秒前";
+    		  }else if(nowd.getSeconds()-sec==0){
+    			  times=nowd.getMilliseconds()-d.getMilliseconds()+"毫秒前";
+    		  }
+    		  return times;
+    		}
             /**
              * 功能：创建评论form的html
              * 参数: 无

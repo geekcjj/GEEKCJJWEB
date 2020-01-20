@@ -238,15 +238,17 @@
 	                <div class="pagenumber">
 	                	<div class="container-fluid">
 		                <div class="row">
-		                	<nav class="pagenum" id="pagenum1">
+		                	<nav class="pagenum" id="pagenum-bar">
 							    <span class="pagenum-btns">
-							      <a class="pagenum-prev">&laquo;</a>
-							      <a class="pagenum-active">1</a>
-							      <span class="pagenum-break">...</span>
-							      <a class="pagenum-next">&raquo;</a>
+							      <button class="pagenum-prev" id="pagenum-prev">&laquo;</button>
+							      <span id="pageNum-ellipsis" class="hidden-xs">
+							      		<button class="pagenum-active">1</button>
+							      		<span class="pagenum-break">...</span>
+							      </span>
+							      <button class="pagenum-next" id="pagenum-next">&raquo;</button>
 							    </span>
 							    <span class="pagenum-skip hidden-xs">
-							      共<b class="pagenum-total">98</b>页&nbsp;&nbsp;到第<input class="pagenum-input" value="1" type="text" />页<a class="pagenum-ok">确定</a>
+							      共<b class="pagenum-total" id="pagenum-total">98</b>页&nbsp;&nbsp;到第<input class="pagenum-input" value="1" type="text" />页<button class="pagenum-ok">确定</button>
 							    </span>
 							</nav>
 		                </div>
@@ -644,9 +646,64 @@
 		        // 	$("<img/>").attr("src", item.media.m).appendTo("#images");
 		        // 	if (i == 3) return false;
 		        // });
-		        agoComment = parseData(data.data.list);
-		        console.log(agoComment);
-		        //agoComment = [[${list}]];
+		        var fivepagenumber="";
+	         	 //删除表格之前数据(标题栏除外)--->防止出现几页的数据叠加的情况 
+		         //$("#selectTable tr").not(":first").remove(); 
+		         //设置上一页 下一页连接 
+		         //$("a:eq(0)")匹配a标签的元素
+		         //$("#indexpage").attr("href","javascript:getByPageBean(1)"); 
+		         $("#pagenum-prev").attr("onclick","getAllUserLeaveWords("+data.data.prePage+")");
+		         $("#pagenum-next").attr("onclick","getAllUserLeaveWords("+data.data.nextPage+")");
+		         $("#pagenum-total").html(data.data.pages);
+		         if(data.data.pages>5){
+		         	var prevnumber="";
+		         	var nextnumber="";
+		         	if(data.data.pageNum>=3&&data.data.pages-data.data.pageNum>=2){
+		         		for(var i=data.data.pageNum-2;i<=data.data.pageNum;i++){
+		         			prevnumber+="<button class="+(i==data.data.pageNum?'pagenum-active':'pagenum-num')+" id='pageNo"+i+"' onclick='getAllUserLeaveWords("+i+")'>"+i+"</button>";
+		         		}
+		         		for(var i=data.data.pageNum+1;i<=data.data.pageNum+2;i++){
+		         			nextnumber+="<button class="+(i==data.data.pageNum?'pagenum-active':'pagenum-num')+" id='pageNo"+i+"' onclick='getAllUserLeaveWords("+i+")'>"+i+"</button>";
+		         		}
+		         	$("#pageNum-ellipsis").html(prevnumber+nextnumber);
+		         	}else if(data.data.pageNum<3){
+		         		for(var i=1;i<=5;i++){
+		         			fivepagenumber+="<button class="+(i==data.data.pageNum?'pagenum-active':'pagenum-num')+" id='pageNo"+i+"' onclick='getAllUserLeaveWords("+i+")'>"+i+"</button>";
+		         		}
+		         	$("#pageNum-ellipsis").html(fivepagenumber);
+		         	}else if(data.data.pages-data.data.pageNum<2){
+		         		for(var i=data.data.pages-4;i<=data.data.pages;i++){
+		         		fivepagenumber+="<button class="+(i==data.data.pageNum?'pagenum-active':'pagenum-num')+" id='pageNo"+i+"' onclick='getAllUserLeaveWords("+i+")'>"+i+"</button>";
+		         		}
+		         	$("#pageNum-ellipsis").html(fivepagenumber);
+		         	}
+		         }else{
+		         	for(var i=1;i<=data.data.pages;i++){
+		         		fivepagenumber+="<button class="+(i==data.data.pageNum?'pagenum-active':'pagenum-num')+" id='pageNo"+i+"' onclick='getAllUserLeaveWords("+i+")'>"+i+"</button>";
+		         	}
+		         	$("#pageNum-ellipsis").html(fivepagenumber);
+		         }
+		         //设置显示信息(当前页号,总页数,总条数) 
+		         //$("#pageNo").html(data.currentpage);
+		         //$("#totalPage").html(data.totalpagesize);
+		         //$("#totalCount").html(data.totalrows);
+		         if(data.data.pageNum==1){
+		         $("#pagenum-prev").attr("onclick","javascript:;"); 
+		         }
+		         if(data.data.pageNum==data.data.pages){
+		         $("#pagenum-next").attr("onclick","javascript:;"); 
+		         }
+		         //var current=data.currentpage;
+		         //$("#"+current).css("color", "#0080ff");
+		         /* var pagenumber=$("#'"+data.currentpage+"'").attr("id").substr(3);
+		         if(pagenumber==data.currentpage){
+		         	$("#'"+data.currentpage+"'").css("color", "#0080ff");
+		         } */
+		         //$("#topagecount").val(data.currentpage);
+		         console.log("第二种方法："+searchParentElementArrays(data.data.list));
+		         agoComment = parseData(data.data.list);
+		         console.log("第一种方法："+agoComment);
+		         //agoComment = [[${list}]];
 		        $("#articleComment").html("");
 		        $("#articleComment").gcComment({
 		            "width": "355",
@@ -677,6 +734,8 @@
 			})
 			return count;
 		}
+		//js动态取出json嵌套子json数组，组成新的数组
+		//方法一
 		function parseData(data) {
 			var lw = [];
 			var datas = data ;  // 此处的datas为上述数据源
@@ -694,6 +753,37 @@
             }
             console.log("解析后的数据："+lw);
 			return lw;
+		}
+		//js动态取出json嵌套子json数组，组成新的数组
+		//方法二
+		function searchParentElementArrays (jsond) {
+		  const res = [];
+		  var jsondata=jsond;
+		  const f = (jsondata, arr) => jsondata.forEach(val => (val.replyLeaveWords && val.replyLeaveWords.length!=0) ? f(val.replyLeaveWords, [...arr, val]) : res.push([...arr, val]))
+		  f(jsondata, []);
+		  console.log("解析前："+JSON.stringify(jsondata));
+		  console.log("解析后："+JSON.stringify(res));
+		  return res;
+		}
+		//转换后台返回的这种时间格式2019-04-24T02:30:00.000+0000
+		function resolvingDate(date){
+		  //date是传入的时间
+		  let d = new Date(date);
+		
+		  let month = (d.getMonth() + 1) < 10 ? '0'+(d.getMonth() + 1) : (d.getMonth() + 1);
+		  let day = d.getDate()<10 ? '0'+d.getDate() : d.getDate();
+		  let hours = d.getHours()<10 ? '0'+d.getHours() : d.getHours();
+		  let min = d.getMinutes()<10 ? '0'+d.getMinutes() : d.getMinutes();
+		  let sec = d.getSeconds()<10 ? '0'+d.getSeconds() : d.getSeconds();
+		
+		  let times=d.getFullYear() + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + sec;
+		
+		  return times
+		}
+		//转换后台数据库查询的时间
+		function renderTime(date) {
+		  var dateee = new Date(date).toJSON();
+		  return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '') 
 		}
         function rgb(){//rgb颜色随机
 			var r = Math.floor(Math.random()*256);
