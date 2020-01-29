@@ -41,6 +41,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="geekcjjback/admin/font-awesome/css/font-awesome.css">
     <!-- <link rel="stylesheet" href="waterfall/css/waterfall.css"> -->
+    <link rel="stylesheet" href="css/edslider.css">
 </head>
 
 <body>
@@ -139,7 +140,7 @@
     <div class="banner_slider">
         <div class="container">
             <div class="animated bounceInLeft">
-                <section class="banner">
+                <!-- <section class="banner">
                     <div class="maike_slider">
                         <div class="bd">
                             <ul id="slider_ul_img">
@@ -170,19 +171,42 @@
                                 <li></li>
                             </ul>
                         </div>
-                        <!-- <div class="hd-title">
-                            <ul id="slider_ul_title">
-                                <li>适当的时光</li>
-                                <li>多个地方</li>
-                                <li>电饭锅的饭</li>
-                            </ul>
-                        </div> -->
                         <div class="pnBtn prev"><span class="blackBg"></span>
                             <a class="arrow" href="javascript:void(0)"></a>
                         </div>
                         <div class="pnBtn next"><span class="blackBg"></span>
                             <a class="arrow" href="javascript:void(0)"></a>
                         </div>
+                    </div>
+                </section> -->
+                <section class="banner">
+                    <div class="eslideShow">
+                        <ul class="mySlideshow" id="myESlideShow">
+                            <li class="item">
+                                <a href="#" target="_blank" class="animated fadeInLeft">
+                                    <img src="sourceFile/indexSliderPicture/11.jpg" alt="Harley-Davidson">
+                                </a>
+                                <div class="slideTitle animated fadeInRight">It's time to ride!</div>
+                            </li>
+                            <li class="item">
+                                <a href="#" target="_blank" class="animated fadeInRight">
+                                    <img src="sourceFile/indexSliderPicture/22.jpg">
+                                </a>
+                                <div class="slideTitle animated fadeInRight">It's time to ride!</div>
+                            </li>
+                            <li class="item">
+                                <a href="#" target="_blank" class="animated fadeInLeft">
+                                <img src="sourceFile/indexSliderPicture/33.jpg">
+                                </a>
+                                <div class="slideTitle animated fadeInRight">It's time to ride!</div>
+                            </li>
+                            <li class="item">
+                                <a href="#" target="_blank" class="animated fadeInRight">
+                                <img src="sourceFile/indexSliderPicture/44.jpg" >
+                                </a>
+                                <div class="slideTitle animated fadeInRight">It's time to ride!</div>
+                            </li>
+                        </ul>
                     </div>
                 </section>
             </div>
@@ -681,7 +705,7 @@
                                     <div class="my-blog-tool">
                                         <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tf&skin=pitaya" 
                                         style="text-align: center;width:96%;margin: 0 auto;" frameborder="0" height="24" allowtransparency="true"></iframe>
-                                        <iframe src="http://music.163.com/outchain/player?type=0&amp;id=34238509&amp;auto=0&amp;height=430" width="100%" height="450" frameborder="no" marginwidth="0" marginheight="0"></iframe> 
+                                        <iframe src="http://music.163.com/outchain/player?type=0&amp;id=167610955&amp;auto=1&amp;height=430" width="100%" height="450" frameborder="no" marginwidth="0" marginheight="0"></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -792,7 +816,7 @@
     </div>
 	<a class="btn btn-default" id="backToTop" href="#" role="button" style="position:fixed; right:9px; bottom:250px; background-color:#CCC;display: none; ">
 		<span class="glyphicon glyphicon-arrow-up"></span>
-	</a>
+    </a>
 	<div class="friendlink_container">
 		<div class="container">
             <div class="row">
@@ -827,6 +851,7 @@
     <script src="plugin/SuperSlide/js/jquery.min.js"></script>
     <!-- <script src="js/jquery-3.4.1.js"></script> -->
     <script src="plugin/SuperSlide/js/superslide.2.1.js"></script>
+    <script src="js/jquery.edslider.js"></script>
     <!-- <script src="waterfall/js/waterfall.js" type="text/javascript"></script>
     <script src="waterfall/js/libs/handlebars/handlebars.js" type="text/javascript"></script> -->
     <script type="text/javascript">
@@ -834,10 +859,26 @@
 		if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
             new WOW().init();
         };
-        
+        (function(){
+			var timer = setTimeout(this.marquee, 1000);
+			}()
+		);
+        function marquee() {
+		    var scrollWidth = $('.text-inform').width();
+		    var textWidth = $('.text-info').width();
+		    var i = scrollWidth;
+		    setInterval(function() {
+	        i--;
+	        if(i < -textWidth ) {
+	            i = scrollWidth;
+	        }
+	        $('.text-info').animate({'left': i+'px'}, 20);
+	        }, 20);
+	    }
 		//$(function(){});
 		//$(document).ready(function(e) {});
         $(document).ready(function(e) {
+            
             // var offset = 890;
             // $(window).on('scroll', function() {
             //     if ($(this).scrollTop() > offset) {
@@ -871,22 +912,6 @@
 		    //     }
 		    // });
 		    //$('.container-block').css({'visibility':'visible'})
-		    (function(){
-				var timer = setTimeout(this.marquee, 1000);
-				}()
-			);
-		    function marquee() {
-		        var scrollWidth = $('.text-inform').width();
-		        var textWidth = $('.text-info').width();
-		        var i = scrollWidth;
-		        setInterval(function() {
-	            i--;
-	            if(i < -textWidth ) {
-	                i = scrollWidth;
-	            }
-	            $('.text-info').animate({'left': i+'px'}, 20);
-	        	}, 20);
-	        }
             $(".navbar_ul li").click(function() {
 				//alert("点击了按钮");
 		        $(this).siblings('li').removeClass('menuactive');  
@@ -931,38 +956,47 @@
 	            activeOverlay:!1
             }); */
             $.getJSON("/indexGallery/blog/allIndexGallery",{}, function(data) {
-                $('#slider_ul_img').html('');
+                $('#myESlideShow').html('');
                 //$('#slider_ul_title').html('');
                 $.each(data.data, function () {
+                    var animateStyles=['animated fadeInLeft','animated fadeInRight'];
                     //this.isAdvertise
-                    var slider_img = '<li><a target="_blank" href="'+(this.imgLink==null?'#':this.imgLink)+'" ><img src="'+this.sliderImg+'" /><span class="hidden-sm hidden-xs">'+this.imgDescription+'</span></a></li>';
+                    var slider_img = '<li class="item"><a target="_blank" class="animated fadeInLeft" href="'+(this.imgLink==null?'#':this.imgLink)+'" ><img src="'+this.sliderImg+'" /></a><div class="slideTitle animated fadeInRight hidden-xs">'+this.imgDescription+'</div></li>';
                     //var slider_title = '<li>'+this.imgDescription+'</li>';
                     //console.log(this.imgDescription);
                     //把每次遍历的一行数据 添加到ul中
-                    $("#slider_ul_img").append(slider_img);
+                    $("#myESlideShow").append(slider_img);
                     //$("#slider_ul_title").append(slider_title);
                 });
-                jQuery(".maike_slider .bd li").first().before(jQuery(".maike_slider .bd li").last());
-                jQuery(".maike_slider .hd li").first().before(jQuery(".maike_slider .hd li").last());
-                //$(".maike_slider .bd li").addEventListener('touchstart', touchstartHandler); // 滑动开始绑定的函数 touchstartHandler
-				//$(".maike_slider .bd li").addEventListener('touchmove', touchmoveHandler); // 持续滑动绑定的函数 touchmoveHandler
-				//$(".maike_slider .bd li").addEventListener('touchend', touchendHandeler); // 滑动结束绑定的函数 touchendHandeler
-                jQuery(".maike_slider").hover(function () {
-                    jQuery(this).find(".arrow").stop(true, true).fadeIn(300)
-                }, function () {
-                    jQuery(this).find(".arrow").fadeOut(300)
-                });
-                jQuery(".maike_slider").slide({
-                    titCell: ".hd ul",
-                    mainCell: ".bd ul",
-                    effect: "leftLoop",
-                    autoPlay: true,
-                    vis: 3,
-                    autoPage: true,
-                    trigger: "mouseover"
+                // jQuery(".maike_slider .bd li").first().before(jQuery(".maike_slider .bd li").last());
+                // jQuery(".maike_slider .hd li").first().before(jQuery(".maike_slider .hd li").last());
+                // //$(".maike_slider .bd li").addEventListener('touchstart', touchstartHandler); // 滑动开始绑定的函数 touchstartHandler
+				// //$(".maike_slider .bd li").addEventListener('touchmove', touchmoveHandler); // 持续滑动绑定的函数 touchmoveHandler
+				// //$(".maike_slider .bd li").addEventListener('touchend', touchendHandeler); // 滑动结束绑定的函数 touchendHandeler
+                // jQuery(".maike_slider").hover(function () {
+                //     jQuery(this).find(".arrow").stop(true, true).fadeIn(300)
+                // }, function () {
+                //     jQuery(this).find(".arrow").fadeOut(300)
+                // });
+                // jQuery(".maike_slider").slide({
+                //     titCell: ".hd ul",
+                //     mainCell: ".bd ul",
+                //     effect: "leftLoop",
+                //     autoPlay: true,
+                //     vis: 3,
+                //     autoPage: true,
+                //     trigger: "mouseover"
+                // });
+                $('.mySlideshow').edslider({
+                    width : '100%',
+                    height: 335
                 });
             });
-            
+            //当要获取服务器上的数据时，我们得把下面的代码放到获取json数据之后，这样才能实例化轮播图数据，例如我这是放到$.getJSON("/indexGallery/blog/allIndexGallery",{}, function(data) {【代码段】});
+            // $('.mySlideshow').edslider({
+            //     width : '100%',
+            //     height: 335
+            // });
             $.ajax({
                 url: "/category/blog/getAllCategoryCount",
                 data: {},
@@ -1073,6 +1107,31 @@
 			}; */
             
     </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+		var app = new Vue({
+			el: "#myCarousel",
+			data() {
+				return {
+					list: [{"id":1,"sliderImg":"http://localhost:8090/sourceFile/indexSliderPicture/11.jpg","imgDescription":"1111111111111","imgLink":null,"isAdvertise":"0","createTime":"2020-01-17T07:21:27"},
+                    {"id":2,"sliderImg":"http://localhost:8090/sourceFile/indexSliderPicture/22.jpg","imgDescription":"2222222222","imgLink":null,"isAdvertise":"0","createTime":"2020-01-17T07:21:47"},
+                    {"id":3,"sliderImg":"http://localhost:8090/sourceFile/indexSliderPicture/33.jpg","imgDescription":"3333333333","imgLink":null,"isAdvertise":"0","createTime":"2020-01-17T07:22:09"},
+                    {"id":4,"sliderImg":"http://localhost:8090/sourceFile/indexSliderPicture/44.jpg","imgDescription":"444444444","imgLink":null,"isAdvertise":"0","createTime":"2020-01-17T07:22:33"}]
+				}
+			},
+			created: function() {
+                this.getList();
+			},
+			methods: {
+                getList(){
+                    $.getJSON("/indexGallery/blog/allIndexGallery",{}, function(data) {
+                        console.log("首页轮播图："+JSON.stringify(data.data));
+                        //this.list=data.data;
+                    });
+                }
+			}
+		})
+	</script> -->
     <script src="js/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
 		document.body.oncopy = function () {
