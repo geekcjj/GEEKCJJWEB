@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../simditor/styles/simditor-fullscreen.css" />
     <link rel="stylesheet" type="text/css" href="../handyeditor/skin/HandyEditor.css" />
     <link rel="stylesheet" type="text/css" href="../handyeditor/external/css/HandyEditor.css" />
+    <link rel="stylesheet" href="../jodit/build/jodit.min.css">
     <!-- Bootstrap -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -70,6 +71,7 @@
     <li>Simditor富文本编辑器</li>
     <!-- <li>KindEditor富文本编辑器</li> -->
     <li>HandyEditor富文本编辑器</li>
+    <li>Jodit编辑器</li>
   </ul>
   <div class="layui-tab-content">
     <div class="layui-tab-item layui-show">
@@ -157,6 +159,30 @@
         </div>
       </div>
     </div>
+    <!-- Jodit编辑器 -->
+    <div class="layui-tab-item">
+      <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card" style="overflow-y:scroll !important;">
+                    <div class="layui-card-body">
+                        <!--存放内容-->
+                        <div id="jditor_div">
+                            <textarea id="jodit_editor" name="jditor_content" placeholder="请输入内容。。。"></textarea>
+                        </div>
+                        <div class="site-demo-button" style="margin-top: 20px;">
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_publish()" data-type="handyeditor_publish">发布</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_htmlcontent()" data-type="handyeditor_htmlcontent">获HTML内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_text()" data-type="handyeditor_text">获取纯文本内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="handyeditor_selection()" data-type="handyeditor_selection">获取编辑器选中内容</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--*********************************-->
   </div>
 </div>
 <script type="text/javascript" src="../../layui/layui.all.js"></script>
@@ -176,6 +202,7 @@
 <script type="text/javascript" src="../simditor/scripts/simditor-fullscreen.js"></script>
 <script src="../handyeditor/HandyEditor.min.js"></script>
 <script src="../handyeditor/lang/zh-jian/zh-jian.js"></script>
+<script src="../jodit/build/jodit.min.js"></script>
 <script>
     var $preview, sim_editor, sim_mobileToolbar, sim_alltoolbar,markdown_md_editor;
     //toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote',
@@ -298,6 +325,73 @@
     function handyeditor_text(){
       alert(he.getText());
     }
+    //jodit富文本编辑器
+    var jeditor = new Jodit('#jodit_editor',{
+      uploader: {
+        url: "/articlesLife/admin/uploadAboutMePic",
+        insertImageAsBase64URI: false,
+        imagesExtensions: [
+              "jpg",
+              "png",
+              "jpeg",
+              "gif"
+            ],
+        //headers: {"token":`${db.token}`},
+        filesVariableName: 'files',
+        withCredentials: false,
+        pathVariableName: "path",
+        format: "json",
+        method: "POST",
+        prepareData: function (formdata) {
+            file = formdata.getAll("files[0]")[0];
+            //formdata.append("createTime", (Date.now() / 1000) | 0);
+            formdata.append("aboutMePic", file);
+            return formdata;
+        },
+        isSuccess: function (e) {
+            console.log(e);
+            //console.log("shuju"+e.length);
+            return e.data;
+        },
+        getMessage: function (e) {
+            return void 0 !== e.data.messages && Array.isArray(e.data.messages) ? e.data.messages.join("") : ""
+        },
+        process: function (resp) {
+            var ss = this;
+            console.log(resp);
+            var arrfile = [];
+            //arrfile.push(resp.data);
+            arrfile.unshift(resp.data);
+            console.log(arrfile.length + "" + arrfile[0]);
+            //this.selection.insertImage(arrfile[0]);
+            return {
+                files: arrfile, //[this.options.uploader.filesVariableName] || [],
+                path: '',
+                baseurl: '',
+                error: resp.msg,
+                msg: resp.msg
+            };
+            //return resp.data;
+        },
+        error: function (e) {
+            this.jodit.events.fire("errorMessage", e.message, "error", 4e3)
+        },
+        defaultHandlerSuccess: function (resp) {},
+        defaultHandlerError: function (e) {
+            this.jodit.events.fire("errorMessage", e.message)
+        },
+        contentType: function (e) {
+            return (void 0 === this.jodit.ownerWindow.FormData || "string" == typeof e) &&
+                "application/x-www-form-urlencoded; charset=UTF-8"
+        }
+      },
+      filebrowser: {
+        ajax: {
+            url: 'https://xdsoft.net/jodit/connector/index.php'
+        }
+      }
+    });
+    //jeditor.value = '<p>输入内容。。。</p>';
     // layui.use('layedit', function () {
     //     var layedit = layui.layedit
     //         , $ = layui.jquery;

@@ -959,9 +959,11 @@
                 $('#myESlideShow').html('');
                 //$('#slider_ul_title').html('');
                 $.each(data.data, function () {
-                    var animateStyles=['animated fadeInLeft','animated fadeInRight'];
+                    var animateStyles=['animated fadeInLeft','animated zoomInRight','animated jackInTheBox','animated rubberBand','animated jello'
+                    ,'animated bounceInRight','animated flipInX','animated lightSpeedIn','animated fadeinRight','animated slideInRight'];
+                    var randomNum=Math.floor(Math.random()*10);
                     //this.isAdvertise
-                    var slider_img = '<li class="item"><a target="_blank" class="animated fadeInLeft" href="'+(this.imgLink==null?'#':this.imgLink)+'" ><img src="'+this.sliderImg+'" /></a><div class="slideTitle animated fadeInRight hidden-xs">'+this.imgDescription+'</div></li>';
+                    var slider_img = '<li class="item"><a target="_blank" class="'+animateStyles[randomNum]+'" href="'+(this.imgLink==null?'#':this.imgLink)+'" ><img src="'+this.sliderImg+'" /></a><div class="slideTitle animated fadeInRight hidden-xs">'+this.imgDescription+'</div></li>';
                     //var slider_title = '<li>'+this.imgDescription+'</li>';
                     //console.log(this.imgDescription);
                     //把每次遍历的一行数据 添加到ul中
