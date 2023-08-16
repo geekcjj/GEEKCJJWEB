@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<!--            梦极客  |  一个渴望成为全栈工程师的伪程序员       
+    
+                                  _ooOoo_
+                                 o8888888o
+                                 88" . "88	
+                                 (| -_- |)         
+                                 O\  =  /O	
+                              ____/`---'\____	
+                            .'  \\|     |//  `.
+                           /  \\|||  :  |||//  \
+                          /  _||||| -:- |||||-  \
+                          |   | \\\  -  /// |   |
+                          | \_|  ''\---/''  |   |
+                          \  .-\__  `-`  ___/-. /
+                        ___`. .'  /--.--\  `. . __
+                     ."" '<  `.___\_<|>_/___.'  >'"".
+                    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+               ======`-.____`-.___\_____/___.-`____.-'======
+                                  `=---='
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+     -本模板源码由麦客工作室倾尽心血二次美化，望佛祖保佑梦极客园永远无BUG!-
+     
+           -梦极客园邮箱:geekcjj@gmail.com   qq:1789615426 -
+    
+    -->
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="/images/bloglogo.png" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>iArchie博客-后台管理</title>
+    <link href="geekcjjback/css/login.css" rel="stylesheet" type="text/css"/>
+    <script src="geekcjjback/js/jquery-3.4.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="login_box">
+    <div class="login_l_img"><img src="geekcjjback/images/login-img.png"/></div>
+    <div class="login">
+        <div class="login_logo"><a href="#"><img alt="梦极客园" src="geekcjjback/images/bloglogo.png"/></a></div>
+        <div class="login_name">
+            <p>梦极客园博客-后台管理系统</p>
+        </div>
+        <form method="post" action="/loginRedirectToAdmin" id="login_form" name="loginform">
+        	<input name="loginUserIdType" type="text" id="loginUserIdType" value="登录用户的用户名类型:手机或邮箱或userId" hidden="hidden" style="display: none;">
+            <input name="loginName" type="text" id="loginName" value="用户名" onfocus="this.value=''"
+                   onblur="if(this.value==''){this.value='用户名/手机/邮箱'}">
+            <span id="password_text"
+                  onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').select();">密码</span>
+            <input name="password" type="password" id="password" style="display:none;" required autocomplete='password'
+                   onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>
+            <span class="errormsg" id="errormsg"></span>
+            <input value="登录" style="width:100%;" type="button" onclick="login()">
+        </form>
+    </div>
+    <div class="copyright">
+     	<h2>GEEKCJJ<span style="color:#FF6347;">'S</span> 梦极客园</h2>
+        <p>由<a href="http://www.maikete.xyz" target="_blank" style="color:white;text-decoration:underline;">GEEKCJJ</a>提供技术支持</p>
+        <p>by:&nbsp;GEEKCJJ--版权所有© 2013－2019 maikete.xyz, all rights reserved</p>
+     </div>
+</div>
+<script type="text/javascript">
+		var loginForm = document.loginform;
+
+	    function submitlogin(){
+	    		//创建XMLHttpRequest对象
+		        var xmlHttp = new XMLHttpRequest();
+		        //获取值
+		        var userid = document.getElementById("loginName").value;
+		        var password=document.getElementById("password").value;
+		        if(userid.trim()==""||password.trim()==""){
+						document.getElementById("errormsg").innerHTML="账户密码为空！请重新输入！！！";
+				}else{
+	    		/* xmlhttp.open("GET", "IsExistAdminUserUserid?userid="+username,false);
+				xmlhttp.send();
+				document.getElementById("resultmsg").innerHTML=xmlhttp.responseText; */
+		        //设置回调函数
+		        xmlHttp.onreadystatechange = function () {
+		            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+		            	if(xmlHttp.responseText.code=="0"){
+		            		console.log(xmlHttp.responseText);
+		            		document.getElementById("errormsg").innerHTML="密码错误！";
+		            	}else if(xmlHttp.responseText=="no"){
+		            		document.getElementById("errormsg").innerHTML = "该用户不存在！";//xmlHttp.responseText;
+		            	}else{
+		            		//document.getElementById("usernameerrormsg").innerHTML="密码错误！";
+		            		loginForm.submit();
+		            	}
+		            }
+		         }
+		         //配置XMLHttpRequest对象
+		         xmlHttp.open("GET", "/blogUser/adminUserLogin?loginName="+userid+"&password="+password,true);
+		         //发送请求
+		         xmlHttp.send(null);
+		         }
+	    }
+	    function login() {
+	    	var loginName = $("#loginName").val();//document.getElementById("loginName").value;
+		    var password=$("#password").val();//document.getElementById("password").value;
+		    if(loginName.trim()==""||password.trim()==""){
+				document.getElementById("errormsg").innerHTML="账户密码为空！请重新输入！";
+			}else{
+				console.log($('#login_form').serialize()+"登录名:"+$("#loginName").val());
+				var myemailreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+				var myphonereg = /^(1[3-9])\d{9}$/;
+				if (myemailreg.test(loginName)) {
+					$.ajax({
+		            	//几个参数需要注意一下
+		                type: "POST",//方法类型
+		                dataType: "json",//预期服务器返回的数据类型可以text或者是json
+		                url: "/blogUser/admin/loginByUserEmail" ,//url
+		                data: {loginName:$("#loginName").val(),password:$("#password").val()},
+		                success: function (result) {
+		                    console.log(result);//打印服务端返回的数据(调试用)
+		                    //if (result.resultCode == 200) {
+		                        //alert("SUCCESS");
+		                        /* if(result.code=="0"){
+				            		document.getElementById("errormsg").innerHTML=result.msg;
+				            	}else if(result.code=="209"){
+				            		document.getElementById("errormsg").innerHTML = result.msg;//xmlHttp.responseText;
+				            		console.log(result.data.userPic);
+				            	}else{
+				            		//document.getElementById("usernameerrormsg").innerHTML="密码错误！";
+				            		$("#loginUserIdType").val(result.data.loginUserIdType);
+				            		loginForm.submit();
+				            		//window.location.href="/loginRedirectToAdmin";
+				            	} */
+		                    //}
+		                    if(result.data==true){
+		                    	loginForm.submit();
+				            	//document.getElementById("errormsg").innerHTML=result.msg;
+				            }else{
+				            	document.getElementById("errormsg").innerHTML=result.msg;
+				            }
+		                },
+		                error : function() {
+		                    alert("登录失败！");
+		                }
+		            });
+				}else if(myphonereg.test(loginName)){
+					$.ajax({
+		            	//几个参数需要注意一下
+		                type: "POST",//方法类型
+		                dataType: "json",//预期服务器返回的数据类型可以text或者是json
+		                url: "/blogUser/admin/loginByPhoneNumber" ,//url
+		                data: {loginName:$("#loginName").val(),password:$("#password").val()},
+		                success: function (result) {
+		                    console.log(result);//打印服务端返回的数据(调试用)
+		                    //if (result.resultCode == 200) {
+		                        //alert("SUCCESS");
+		                        /* if(result.code=="0"){
+				            		document.getElementById("errormsg").innerHTML=result.msg;
+				            	}else if(result.code=="209"){
+				            		document.getElementById("errormsg").innerHTML = result.msg;//xmlHttp.responseText;
+				            		console.log(result.data.userPic);
+				            	}else{
+				            		//document.getElementById("usernameerrormsg").innerHTML="密码错误！";
+				            		$("#loginUserIdType").val(result.data.loginUserIdType);
+				            		loginForm.submit();
+				            		//window.location.href="/loginRedirectToAdmin";
+				            	} */
+		                    //}
+		                    if(result.data==true){
+		                    	loginForm.submit();
+				            	//document.getElementById("errormsg").innerHTML=result.msg;
+				            }else{
+				            	document.getElementById("errormsg").innerHTML=result.msg;
+				            }
+		                },
+		                error : function() {
+		                    alert("登录失败！");
+		                }
+		            });
+				}else{
+					$.ajax({
+		            	//几个参数需要注意一下
+		                type: "POST",//方法类型
+		                dataType: "json",//预期服务器返回的数据类型可以text或者是json
+		                url: "/blogUser/admin/loginByUserName" ,//url
+		                data: {loginName:$("#loginName").val(),password:$("#password").val()},
+		                success: function (result) {
+		                    console.log(result);//打印服务端返回的数据(调试用)
+		                    //if (result.resultCode == 200) {
+		                        //alert("SUCCESS");
+		                        /* if(result.code=="0"){
+				            		document.getElementById("errormsg").innerHTML=result.msg;
+				            	}else if(result.code=="209"){
+				            		document.getElementById("errormsg").innerHTML = result.msg;//xmlHttp.responseText;
+				            		console.log(result.data.userPic);
+				            	}else{
+				            		//document.getElementById("usernameerrormsg").innerHTML="密码错误！";
+				            		$("#loginUserIdType").val(result.data.loginUserIdType);
+				            		loginForm.submit();
+				            		//window.location.href="/loginRedirectToAdmin";
+				            	} */
+		                    //}
+		                    if(result.data==true){
+		                    	loginForm.submit();
+				            	//document.getElementById("errormsg").innerHTML=result.msg;
+				            }else{
+				            	document.getElementById("errormsg").innerHTML=result.msg;
+				            }
+		                },
+		                error : function() {
+		                    alert("登录失败！");
+		                }
+		            });
+				}
+            }
+        }
+        /* $.getJSON(
+		    "http://www.example.com/json.php",
+		    {name:"ele", pass:"123"},
+		    function(data){ console.log(data); }
+		);
+		$.ajax({
+		    type: "GET", 
+		    url: "http://www.example.com/json.php",
+		    data: {name:"ele", pass:"123"}, //可选参数
+		    dataType: "json",
+		    success: function(data){ console.log(data); } //可选参数
+		}); */
+		//$.post,$.get,$.getJSON
+	    document.onkeydown=function(event){
+				var e = event || window.event || arguments.callee.caller.arguments[0];
+				if(e && e.keyCode==13){ // enter 键
+					//要做的事情
+					login();
+				}
+		};
+	    function check(thisform)
+			{
+				var username=document.getElementById("account").value;
+				var password=document.getElementById("password").value;
+				with(thisform)
+				{
+					if(username.trim()==""||password.trim()==""){
+						document.getElementById("errormsg").innerHTML="账户密码为空！请重新输入！";
+						return false;
+					}else{
+						return true;
+					}
+				}
+			}
+</script>
+<div style="text-align:center;">
+</div>
+</body>
+</html>

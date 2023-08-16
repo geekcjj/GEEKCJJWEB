@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>梦极客园</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="description" content="本站面向全国互联网科技爱好者，是互联网信息资讯共享的友好平台，共享优质的互联网信息资讯、技术文章、源代码项目等……" >
+    <meta name="keywords" content="梦极客园,梦极客园geekcjj,梦极客园网,源代码,资源下载，免费，互联网信息共享">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" >
+    <meta name="referrer" content="no-referrer" >
+    <link rel="shortcut icon" href="images/bloglogo.png" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="wysiwygeditor/bootstrap-wysihtml5-0.0.2.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="images/bloglogo.png" class="top_banner_logo" onmouseover="this.src='images/bloglogo.png'"
+                        onmouseout="this.src='images/bloglogo.png'" />
+                    <span class="logo-text navbar-collapse collapse animated rotateIn">梦极客园</span>
+                </div>
+                <div class="right-block">
+                    <div class="wow pulse bg-yellow" data-wow-delay="0.1s">人生，</div>
+                    <div class="wow rollIn bg-red" data-wow-iteration="1" data-wow-duration="0.5s">就像一盒巧克力，</div>
+                    <div class="wow bounceInRight bg-blue">你永远不知道下一块会是什么味道！</div>
+                    <div class="wow bounceInRight bg-blue">---《阿甘正传》</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default navbar-static-top" id="navigator_bar">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#collapse_searche_div">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="navbar-toggle pull-right" data-toggle="collapse" data-target="#navbar_collapse_div">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">
+                                                <img src="images/mai.png" class="logo_img" onmouseover="this.src='images/mai.jpg'"
+                                                    onmouseout="this.src='images/mai.png'" style="width:22px;height:22px;" />
+                                            </a> -->
+                <a class="navbar-brand visible-xs" href="https://www.geekcjj.top/">梦极客园</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar_collapse_div">
+                <ul class="nav navbar-nav navbar-left navbar_ul">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+    
+                    <li>
+                        <a href="/techBlogList">IT技术</a>
+                    </li>
+                    <li>
+                        <a href="/newTalkList">新闻杂谈</a>
+                    </li>
+    
+                    <li>
+                        <a href="/resourceDownload">资源文件</a>
+                    </li>
+    
+                    <li>
+                        <a href="javascript:0;">生活随笔</a>
+                        <div class="itembox">
+                            <ul>
+                                <li><a href="/thinkingLife">格物生活</a></li>
+                                <li><a href="/personalEssay">个人随笔</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <a href="/leavemessage-board">给我留言</a>
+                    </li>
+                    <li>
+                        <a href="/aboutgeekcjj">关于梦极客园</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="#">消息 <span class="badge">42</span></a></li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">GEEKCJJ<span class="caret"></span></a>
+                        <ul class="dropdown dropdown-menu navbar_ul">
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="#">我的收藏</a></li>
+                            <li><a href="#">账号设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse animated fadeInDown" id="collapse_searche_div">
+                <div class="search_bar5">
+                    <form>
+                        <input type="text" class="form-control" placeholder="请输入您要搜索的内容...">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- <nav id="nav" class="nav-wrap">
+        <ul class="clearfix">
+            <li class="menuactive">
+                <a href="http://www.youtiy.com">
+						首页
+					</a>
+            </li>
+
+            <li>
+                <a href="http://www.youtiy.com">
+						个人日记
+					</a>
+            </li>
+
+            <li>
+                <a href="http://www.youtiy.com">
+						关于周元俊
+					</a>
+            </li>
+
+            <li>
+                <a href="http://www.youtiy.com">
+						联系我们
+					</a>
+            </li>
+
+            <li id="navEnd">
+                <a href="http://www.youtiy.com">
+						留言版
+					</a>
+            </li>
+        </ul>
+    </nav> -->
+    <!-- <section class="banner">
+        <div class="youtiy_slider">
+            <div class="bd">
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://www.youtiy.com"><img src="plugin/SuperSlide/images/1.jpg" /></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.youtiy.com"><img src="plugin/SuperSlide/images/2.jpg" /></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.youtiy.com"><img src="plugin/SuperSlide/images/3.jpg" /></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+            <div class="pnBtn prev"><span class="blackBg"></span>
+                <a class="arrow" href="javascript:void(0)"></a>
+            </div>
+            <div class="pnBtn next"><span class="blackBg"></span>
+                <a class="arrow" href="javascript:void(0)"></a>
+            </div>
+        </div>
+    </section> -->
+    <div class="container">
+        <section class="container-content">
+            <div class="row">
+                <aside class="col-lg-3 col-md-3 hidden-sm hidden-xs animated slideInLeft">
+                    <div class="right-fun">
+                        <div class="model">
+                            <div class="title">站内搜索</div>
+                            <div class="content">
+                                <div class="searche_bar7">
+                                    <form>
+                                        <input type="text" placeholder="请输入关键词" name="crid" />
+                                        <button type="submit"></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default
+                                                recommendlist" style="margin-top:20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                快捷菜单
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div class="model recommend">
+                                                                                    						                            <div class="title">热门推荐</div>						                            <div class="content"> -->
+                                <div class="fastmenu">
+                                    <span><a href="http://www.maikete.com">文章博客</a></span>
+                                    <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                    <span><a href="http://www.maikete.com">资源文件</a></span>
+                                    <span><a href="http://www.maikete.com">格物生活</a></span>
+                                    <span><a href="http://www.maikete.com">给我留言</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="model">
+                                            <div class="title">快捷菜单</div>
+                                            <div class="menu">
+                                                <span><a href="http://www.maikete.com">文章博客</a></span>
+                                                <span><a href="http://www.maikete.com">新闻资讯</a></span>
+                                                <span><a href="http://www.maikete.com">资源文件</a></span>
+                                                <span><a href="http://www.maikete.com">格物生活</a></span>
+                                                <span><a href="http://www.maikete.com">给我留言</a></span>
+                                            </div>
+                                            </div> -->
+                        <div class="panel panel-default" style="margin-top:
+                                                20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                分类
+                            </div>
+                            <div class="panel-body">
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    Linux系统编程<span class="badge"></span>
+                                </a>
+                
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    Python<span class="badge"></span>
+                                </a>
+                
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    Django<span class="badge"></span>
+                                </a>
+                
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    深度学习<span class="badge"></span>
+                                </a>
+                
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    MySql<span class="badge"></span>
+                                </a>
+                
+                                <a style="margin-bottom: 3px" type="button" class="btn
+                                                        btn-primary
+                                                        btn-sm">
+                                    生活<span class="badge"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default recommendlist" style="margin-top:
+                                                20px;">
+                            <div class="panel-heading" style="background:rgba(0,0,0,.0001)">
+                                热门推荐
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div class="model recommend">
+                                            <div class="title">热门推荐</div>
+                                            <div class="content"> -->
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_317.html">dw个人网页模板作业成品</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_382.html">HTML个人简历源代码</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_381.html">自我介绍个人网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_379.html">DIV+CSS静态HTML网页设计模板</a>
+                                </p>
+                                <p>
+                                    <a href="http://www.youtiy.com/detail_377.html">一个完整的html网页设计代码免费下载</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <div class="col-lg-9 col-md-9 animated slideInRight">
+                    <div class="article-content">
+                        <h1 class="_1RuRku">git上传本地文件步骤</h1>
+                        <div class="rEsl9f">
+                            <div class="s-dsoj"><span class="_3tCVn5"><span aria-label="ic-diamond" class="anticon"
+                                        style="text-align: center;"><svg width="1em" height="1em" fill="currentColor" aria-hidden="true"
+                                            focusable="false" class="">
+                                            <use xlink:href="#ic-diamond"><svg id="ic-diamond" viewBox="0 0 1026 1024">
+                                                    <path
+                                                        d="M751.144277 307.2l-123.016533-238.933333h159.778133a81.92 81.92 0 0 1 59.1872 25.258666l160.256 167.492267A27.306667 27.306667 0 0 1 987.620011 307.2h-236.475734z m270.506667 111.547733L640.927744 946.039467a27.306667 27.306667 0 0 1-48.128-24.234667L766.504277 375.466667h-56.388266l-170.5984 590.165333a27.306667 27.306667 0 0 1-52.462934 0.034133L315.500544 375.466667H259.112277l174.523734 545.5872a27.306667 27.306667 0 0 1-48.128 24.302933L5.160277 418.747733A27.306667 27.306667 0 0 1 27.346944 375.466667H999.464277a27.306667 27.306667 0 0 1 22.152534 43.281066zM18.301611 261.0176L178.557611 93.525333A81.92 81.92 0 0 1 237.744811 68.266667h159.744L274.506411 307.2H38.030677a27.306667 27.306667 0 0 1-19.729066-46.1824zM453.877077 68.266667h117.896534l122.9824 238.933333H330.894677l122.9824-238.933333z">
+                                                    </path>
+                                                </svg></use>
+                                        </svg></span><span>0.164</span></span><time datetime="2018-09-25T12:10:46.000Z">2018.09.25
+                                    20:10:46</time><span>字数 236</span><span>阅读 209</span></div>
+                        </div>
+                        <article class="_2rhmJa">
+                            <p>1、（先进入项目文件夹）通过命令 git init 把这个目录变成git可以管理的仓库</p>
+                            <pre class="line-numbers  language-undefined"><code class="  language-undefined">git init
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <p>2、把文件添加到版本库中，使用命令 git add .添加到暂存区里面去，不要忘记后面的小数点“.”，意为添加文件夹下的所有文件</p>
+                            <pre class="line-numbers  language-csharp"><code class="  language-csharp">git <span class="token keyword">add</span> <span class="token punctuation">.</span>
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <p>3、用命令 git commit告诉Git，把文件提交到仓库。引号内为提交说明</p>
+                            <pre class="line-numbers  language-bash"><code class="  language-bash">git commit -m '提交文件'
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <p>4、关联到远程库</p>
+                            <pre class="line-numbers  language-csharp"><code class="  language-csharp">git remote <span class="token keyword">add</span> origin 你的远程库地址
+                        例如<span class="token punctuation">:</span>git remote <span class="token keyword">add</span> origin https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>qiyiou25<span class="token operator">/</span>qiu<span class="token punctuation">.</span>git
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                            <p>5、获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）</p>
+                            <pre class="line-numbers  language-undefined"><code class="  language-undefined">git pull --rebase origin master
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <p>6、把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。</p>
+                            <pre class="line-numbers  language-undefined"><code class="  language-undefined">git push -u origin master
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <p>7、状态查询命令</p>
+                            <pre class="line-numbers  language-undefined"><code class="  language-undefined">git status
+                        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <div class="image-package" style="text-align: center;">
+                                <div class="image-container">
+                                    <div class="image-container-fill"></div>
+                                    <div class="image-view" data-width="1947" data-height="1276"><img data-original-src="//upload-images.jianshu.io/upload_images/13183799-5104e1cd3d16e7b0.png" data-original-width="1947" data-original-height="1276" data-original-format="image/png" data-original-filesize="1946551"
+                                            data-image-index="0" class="" src="https://upload-images.jianshu.io/upload_images/13183799-5104e1cd3d16e7b0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp">
+                                    </div>
+                                </div>
+                                <div class="image-caption">git常用命令</div>
+                            </div>
+                        </article>
+                    </div>
+                    <div>
+                        <section>
+                            <!-- <iframe src="squireeditor/source/document.html" onload="top.editor=this.contentWindow.editor" width="100%" height="200"></iframe> -->
+                            <div class="col-lg-12">
+                                <textarea id="wsyihtml5_textarea" placeholder="Enter text ..."></textarea>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="friendlink_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="friendlink_title"><label>友情链接:</label></div>
+                    <div class="friendlink_content" id="friendlink_content">
+                        <a class="friendlink_a" href="https://www.maikete.xyz">麦科特</a><a class="friendlink_a"
+                            href="https://www.chitang.club">小池塘</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <h2>GEEKCJJ<span style="color:#FF6347;">'S</span> 梦极客园</h2> -->
+                    <p>由<a href="http://www.maikete.xyz" target="_blank"
+                            style="color:white;text-decoration:underline;">GEEKCJJ</a>提供技术支持</p>
+                    <p>© 2018－2019 maikete.xyz, all rights reserved &nbsp;<a href="http://beian.miit.gov.cn"
+                            target="_blank">苏ICP备19023267号-3</a></p>
+                    <p><a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19023267号-3 &amp;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/html5.js"></script>
+    <script src="wysiwygeditor/libs/js/wysihtml5-0.3.0_rc2.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="wysiwygeditor/bootstrap-wysihtml5-0.0.2.js"></script>
+    <script src="js/wow.min.js"></script>
+    <!-- <script src="plugin/SuperSlide/js/jquery.min.js"></script> -->
+    <!-- <script src="js/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="plugin/SuperSlide/js/superslide.2.1.js"></script> -->
+    <!-- <script src="squireeditor/build/squire-raw.js"></script> -->
+    <script type="text/javascript">
+        if (!/msie [6|7|8|9]/i.test(navigator.userAgent)) {
+            new WOW().init();
+        }
+        $('#wsyihtml5_textarea').wysihtml5({
+            "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": true, //Italics, bold, etc. Default true
+            "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, //Button which allows you to edit the generated HTML. Default false
+            "link": true, //Button to insert a link. Default true
+            "image": true, //Button to insert an image. Default true,
+            "color": false //Button to change color of font  
+        });
+        $(document).ready(function(e) {
+            // var offset = 890;
+            // $(window).on('scroll', function() {
+            //     if ($(this).scrollTop() > offset) {
+            //         $('.recommendlist').css('position', 'fixed');
+            //         $('.recommendlist').css('top', '0px');
+            //     } else {
+            //         $('.recommendlist').css('position', '');
+            //     }
+            // });
+            $(window).on("scroll", function() {
+                if ($(this).scrollTop() > 150) {
+                    // $('#navigator_bar').css('position', 'fixed');
+                    // $('#navigator_bar').css('top', '0px');
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top navbar-fixed-top"
+                    );
+                    $(".container-content").css("margin", "71px auto 0 auto");
+                    //$('#navigator_bar').css('');
+                } else {
+                    $("#navigator_bar").attr(
+                        "class",
+                        "navbar navbar-default navbar-static-top"
+                    );
+                    $(".container-content").css("margin", "20px auto 0 auto");
+                    //$('#navigator_bar').css('position', '');
+                }
+            });
+        });
+    </script>
+    <script src="js/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+		document.body.oncopy = function () {
+		swal("复制成功！", "若要转载请务必保留原文链接，申明来源，谢谢合作！By:梦极客园","success");
+		addLink();
+		/* setTimeout( function () {
+			//window.event.returnValue = false;
+			var text = window.clipboardData.getData("text"); 
+			if (text) {
+			text = text + "\r\n本篇文章来源于google( www.google.com) 原文链接："+location.href;
+			clipboardData.setData("text", text); 
+			} 
+			},100); */
+		}
+		function addLink() {
+		    var body_element = document.body;
+		    var selection;
+		    selection = window.getSelection();
+		    if (window.clipboardData) { // Internet Explorer
+		        var pagelink ="\r\n\r\n 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        window.clipboardData.setData ("Text", copytext);
+		        return false;
+		    } else {
+		        var pagelink = " 本文为[梦极客园]的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明 原文链接: "+document.location.href+"";
+		        var copytext = selection + pagelink;
+		        var newdiv = document.createElement('div');
+		        newdiv.style.position='absolute';
+		        newdiv.style.left='-99999px';
+		        body_element.appendChild(newdiv);
+		        newdiv.innerHTML = copytext;
+		        selection.selectAllChildren(newdiv);
+		        window.setTimeout(function() {
+		        body_element.removeChild(newdiv);
+		        },0);
+		    }
+		}
+		//防止页面被iframe调用 
+		//(function(window) { if (window.location != window.top.location) { window.top.location = window.location; }})(this);
+	</script>
+	<script type="text/javascript">
+	/* 鼠标特效 */
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+	 $("body").click(function(e) {
+	 var a = new Array("三民主义","民族","民权","民生");
+	 var $i = $("<span/>").text(a[a_idx]);
+	 a_idx = (a_idx + 1) % a.length;
+	 var x = e.pageX,
+	 y = e.pageY;
+	 $i.css({
+	 "z-index": 9999999,
+	 "top": y - 20,
+	 "left": x,
+	 "position": "absolute",
+	 "font-weight": "bold",
+	 "color": "#ff6651"
+	 });
+	 $("body").append($i);
+	 $i.animate({
+	 "top": y - 180,
+	 "opacity": 0
+	 },
+	 1500,
+	 function() {
+	 $i.remove();
+	 });
+	 });
+	});
+	</script>
+</body>
+
+</html>
