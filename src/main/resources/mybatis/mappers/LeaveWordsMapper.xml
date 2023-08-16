@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.LeaveWordsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.LeaveWords">
+        <id column="id" property="id" />
+        <result column="nick_name" property="nickName" />
+        <result column="email" property="email" />
+        <result column="website" property="website" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <result column="lw_type" property="lwType" />
+        <result column="to_user_id" property="toUserId" />
+        <result column="to_nick_name" property="toNickName" />
+        <result column="user_id" property="userId" />
+        <result column="parent_id" property="parentId" />
+        <result column="user_pic" property="userPic" />
+    </resultMap>
+	<!-- 留言查询映射结果 -->
+    <resultMap id="replyLeaveWordsResultMap" type="java.util.Map">
+        <result column="id" property="id" />
+        <result column="nickName" property="nickName" />
+        <result column="email" property="email" />
+        <result column="website" property="website" />
+        <result column="content" property="content" />
+        <result column="createTime" property="createTime" />
+        <result column="lwType" property="lwType" />
+        <result column="toUserId" property="toUserId" />
+        <result column="toNickName" property="toNickName" />
+        <result column="userId" property="userId" />
+        <result column="parentId" property="parentId" />
+        <result column="userPic" property="userPic" />
+        <collection property="replyLeaveWords" javaType="java.util.ArrayList"
+        ofType="java.util.Map" select="selectReplyLeaveWords" column="{id=id}">
+        </collection>
+    </resultMap>
+	<select id="selectLeaveWords" resultMap="replyLeaveWordsResultMap">
+		SELECT lw.id as id,lw.nick_name as nickName,lw.email as email,lw.website as website,lw.content as content,lw.create_time as createTime,
+		lw.to_nick_name as toNickName,lw.lw_type as lwType,lw.to_user_id as toUserId,lw.user_id as userId,lw.parent_id as parentId,lw.user_pic as userPic
+		 from leave_words lw where lw.parent_id=0 ORDER BY lw.create_time DESC
+	</select>
+	<select id="selectReplyLeaveWords" resultMap="replyLeaveWordsResultMap">
+		SELECT lw.id as id,lw.nick_name as nickName,lw.email as email,lw.website as website,lw.content as content,lw.create_time as createTime,
+		lw.to_nick_name as toNickName,lw.lw_type as lwType,lw.to_user_id as toUserId,lw.user_id as userId,lw.parent_id as parentId,lw.user_pic as userPic
+		 from leave_words lw where lw.parent_id=#{id} ORDER BY lw.create_time ASC
+	</select>
+	<select id="selectLeaveWordsCount" resultType="java.lang.Integer">
+		select count(id) from leave_words lw where lw.lw_type=0
+	</select>
+</mapper>

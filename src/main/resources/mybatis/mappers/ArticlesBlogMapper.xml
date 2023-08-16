@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.ArticlesBlogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.ArticlesBlog">
+        <id column="id" property="id" />
+        <result column="author_id" property="authorId" />
+        <result column="author_name" property="authorName" />
+        <result column="author_pic" property="authorPic" />
+        <result column="original_author" property="originalAuthor" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="content" property="content" />
+        <result column="content_url" property="contentUrl" />
+        <result column="browse_count" property="browseCount" />
+        <result column="category_id" property="categoryId" />
+        <result column="tag_id" property="tagId" />
+        <result column="article_url" property="articleUrl" />
+        <result column="likes" property="likes" />
+        <result column="create_time" property="createTime" />
+        <result column="previous_article_id" property="previousArticleId" />
+        <result column="next_article_id" property="nextArticleId" />
+        <result column="article_img" property="articleImg" />
+    </resultMap>
+    <select id="findAll" resultType="java.util.Map">
+        select ab.article_img,ab.article_url,ab.author_name,ab.category_id,ab.author_pic,ab.content,
+        ab.create_time,ab.description,ab.likes,ab.title from articles_blog ab where ab.title=? or ab.description=?
+         or ab.content=? union all
+        select al.article_img,al.article_url,al.author_name,al.category_id,al.author_pic,al.content,
+        al.create_time,al.description,al.likes,al.title from articles_life al where al.title=? or al.description=?
+         or al.content=? union all
+        select an.article_img,an.article_url,an.author_name,an.category_id,an.author_pic,an.content,
+        an.create_time,an.description,an.likes,an.title from articles_new an where an.title=? or an.description=?
+         or an.content=? order by ab.create_time DESC
+    </select>
+    <select id="searchArt" resultType="java.util.Map">
+        select ab.article_img,ab.article_url,ab.author_name,ab.category_id,ab.author_pic,ab.content,
+        ab.create_time,ab.description,ab.likes,ab.title from articles_blog ab where ab.title=? or ab.description=?
+         or ab.content=? union all
+        select al.article_img,al.article_url,al.author_name,al.category_id,al.author_pic,al.content,
+        al.create_time,al.description,al.likes,al.title from articles_life al where al.title=? or al.description=?
+         or al.content=? union all
+        select an.article_img,an.article_url,an.author_name,an.category_id,an.author_pic,an.content,
+        an.create_time,an.description,an.likes,an.title from articles_new an where an.title=? or an.description=?
+         or an.content=? order by ab.create_time DESC
+    </select>
+</mapper>

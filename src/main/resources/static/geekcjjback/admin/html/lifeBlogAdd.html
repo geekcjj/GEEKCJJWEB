@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../dhxrichtext/codebase/richtext.css" media="all">
+    <!-- css - debug目录下为开发版本  -->
+    <link rel="stylesheet" href="../simplemde-markdown-editor/css/simplemde.min.css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css" />
+    <!-- Bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="../summernote/summernote.css" rel="stylesheet">
+    <script src="../summernote/summernote.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script> -->
+     <!-- async defer -->
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend style="text-align: center">GEEKCJJ格物生活志</legend>
+</fieldset>
+<div style="padding: 20px; background-color: #F2F2F2;">
+  <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-header">文章新增</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文章标题"
+                               class="layui-input">
+                    </div>
+                </div>
+                <!--橙色分割线-->
+                <hr class="layui-bg-orange">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章分类名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文章分类名"
+                               class="layui-input">
+                    </div>
+                </div>
+                <!--蓝色分割线-->
+                <hr class="layui-bg-blue">
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="layui-tab">
+  <ul class="layui-tab-title">
+    <li class="layui-this">ckeditor富文本编辑器</li>
+    <li>DHXRichText富文本编辑器</li>
+    <li>SimpleMde-MarkDown-Editor富文本编辑器</li>
+    <li>layui富文本编辑器-发布文章</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+      <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <!--存放内容-->
+                        <div style="/*开启滚动条*/overflow-y: scroll !important;/*设置高度*/min-height: 200px !important;max-height: 460px !important;">
+                          <textarea name="content" id="ck_editor" placeholder="开始写文章..." style="display:none;">
+                              <p></p>
+                          </textarea>
+                        </div>
+                        <div class="site-demo-button" style="margin-top: 20px;">
+                            <button class="layui-btn site-demo-layedit" onclick="ck_editor_publish()" data-type="ck_editor_publish">发布</button>
+                            <button class="layui-btn site-demo-layedit" onclick="ck_editor_htmlcontent()" data-type="ck_editor_htmlcontent">获取HTML内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="ck_editor_text()" data-type="ck_editor_text">获取纯文本内容</button>
+                            <button class="layui-btn site-demo-layedit" onclick="ck_editor_selection()" data-type="ck_editor_selection">获取编辑器选中内容</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-tab-item">
+        <!-- <div id="summernote"><p>Hello Summernote</p></div> -->
+        <!-- <form method="post"> -->
+          <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <!--DHXRichText存放内容-->
+                            <div id="richtext_container" style="height:500px;"></div>
+
+                            <div class="site-demo-button" style="margin-top: 20px;">
+                              <button class="layui-btn site-demo-layedit" onclick="richtext_publish()" data-type="richtext_publish">发布</button>
+                              <button class="layui-btn site-demo-layedit" onclick="richtext_htmlcontent()" data-type="richtext_htmlcontent">获取HTML内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="richtext_text()" data-type="richtext_text">获取纯文本内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="richtext_markdown()" data-type="richtext_markdown">获取MarkDown内容</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- <textarea id="summernote" name="editordata"></textarea> -->
+        <!-- </form> -->
+    </div>
+    <div class="layui-tab-item">
+        <!-- <div id="summernote"><p>Hello Summernote</p></div> -->
+        <!-- <form method="post"> -->
+          <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <!--存放内容-->
+                            <div style="/*开启滚动条*/overflow-y: scroll !important;/*设置高度*/min-height: 400px !important;max-height: 460px !important;">
+                              <textarea name="editor_field" id="simplemde-markdown-editor"></textarea>
+                            </div>
+                            <div class="site-demo-button" style="margin-top: 20px;">
+                              <button class="layui-btn site-demo-layedit" onclick="simplemde_editor_publish()" data-type="simplemde_editor_publish">发布</button>
+                              <button class="layui-btn site-demo-layedit" onclick="simplemde_editor_htmlcontent()" data-type="simplemde_editor_htmlcontent">获取HTML内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="simplemde_editor_text()" data-type="simplemde_editor_text">获取纯文本内容</button>
+                              <button class="layui-btn site-demo-layedit" onclick="simplemde_editor_markdown()" data-type="simplemde_editor_markdown">获取MarkDown内容</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- <textarea id="summernote" name="editordata"></textarea> -->
+        <!-- </form> -->
+    </div>
+    <div class="layui-tab-item">
+        <div style="padding: 20px; background-color: #F2F2F2;">
+          <div class="layui-row layui-col-space15">
+              <div class="layui-col-md12">
+                  <div class="layui-card">
+                      <div class="layui-card-body">
+                          <!--存放内容-->
+                          <textarea class="layui-textarea" id="LAY_editor" style="display: none">
+                          </textarea>
+                          <div class="site-demo-button" style="margin-top: 20px;">
+                            <button class="layui-btn site-demo-layedit" data-type="LAY_editor_publish">发布</button>
+                            <button class="layui-btn site-demo-layedit" data-type="LAY_editor_htmlcontent">获取HTML内容</button>
+                            <button class="layui-btn site-demo-layedit" data-type="LAY_editor_text">获取纯文本内容</button>
+                            <button class="layui-btn site-demo-layedit" data-type="LAY_editor_selection">获取编辑器选中内容</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../simplemde-markdown-editor/js/simplemde.min.js"></script>
+<script src="../ckeditor/translations/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ckeditor/ckeditor.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../dhxrichtext/codebase/richtext.js"></script>
+<script src="../../js/jquery.min.js" type="text/javascript"></script>
+<script>
+    var dhxrichtext;
+    $(function(){
+          //CKEDITOR.replace('#ck_editor', { height: '545px', width: '1318px' });
+          dhxrichtext= new dhx.Richtext("richtext_container", {
+               //mode:"document",
+               toolbarBlocks: [
+                   "undo", "style", "decoration", "colors",
+                   "align", "link"
+               ],
+               height:300,
+          });
+    });
+    layui.use('layedit', function () {
+            var layedit = layui.layedit
+                , $ = layui.jquery;
+            layedit.set({
+              uploadImage: {
+                url: '' //接口url
+                ,type: '' //默认post
+              }
+            });
+            //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+            //构建一个默认的编辑器
+            var index = layedit.build('LAY_editor');
+
+            //编辑器外部操作
+            var active = {
+                LAY_editor_htmlcontent: function () {
+                    alert(layedit.getContent(index)); //获取编辑器内容
+                }
+                , LAY_editor_text: function () {
+                    alert(layedit.getText(index)); //获取编辑器纯文本内容
+                }
+                , LAY_editor_selection: function () {
+                    alert(layedit.getSelection(index));
+                }
+                , LAY_editor_publish: function(){
+                    alert("发布");
+                }
+            };
+
+            $('.site-demo-layedit').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+			//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	        layui.use('element', function(){
+	          	var element = layui.element;
+	
+	          	//…
+	        	});
+	        });
+        var simplemde = new SimpleMDE({
+          element: document.getElementById("simplemde-markdown-editor"),
+          showIcons: true,
+          spellChecker: false,
+          autofocus: true,
+          autoDownloadFontAwesome: false,
+          placeholder: "开始书写...",
+          autosave: {
+              enabled: true,
+              uniqueId: "simplemde-markdown-editor",
+              delay: 1000,
+          },
+          tabSize: 4,
+          status: false,
+          forceSync: true,
+          hideIcons: false,
+          indentWithTabs: true,
+          lineWrapping: false,
+          renderingConfig: {
+            singleLineBreaks: false,
+            codeSyntaxHighlighting: true
+          },
+          blockStyles: {
+            bold: "**",
+            italic: "*",
+            code: "```"
+          },
+
+        });
+        simplemde.codemirror.on("change", function(){
+         console.log(simplemde.value());
+        });
+        // $(document).ready(function() {
+        //     $('#summernote').summernote(
+        //         {
+        //         placeholder: 'Hello bootstrap 4',
+        //         tabsize: 2,
+        //         height: 400
+        //     });
+        // });
+        // 默认开启预览模式
+        //simplemde.toggleSideBySide();
+        var ckeditordata,theCKEditor;
+        ClassicEditor.create(document.querySelector('#ck_editor'), {
+                ckfinder: {
+                    uploadUrl: '/'
+                },
+                autosave: {
+                    save(editor) {
+                       return saveData( editor.getData() );
+                    }
+                },
+            }
+        ).then(editor => {
+        window.editor = editor;
+        theCKEditor=editor;
+        //ckeditordata = editor.getData();
+        	console.log(theCKEditor.getData());
+        }).catch(error => {
+            console.log(error);
+        });
+        function ck_editor_htmlcontent(){
+            alert(theCKEditor.getData());
+            console.log(theCKEditor.getData());
+        }
+        function ck_editor_text(){
+            alert($('#ck_editor').innerHTML);
+        }
+        function richtext_htmlcontent(){
+            alert(dhxrichtext.getValue("html"));
+        }
+        function richtext_text(){
+            alert(dhxrichtext.getValue("text"));
+        }
+        function richtext_markdown(){
+            alert(dhxrichtext.getValue("markdown"));
+        }
+        function simplemde_editor_htmlcontent(){
+            var data=simplemde.value();
+            alert(simplemde.markdown(data));
+        }
+        function simplemde_editor_text(){
+            alert(simplemde.value());
+        }
+        function simplemde_editor_markdown(){
+            // var dataval=simplemde.value();
+            // alert(simplemde.markdown(dataval));
+        }
+        //给DHXRichText 富文本编辑器设置内容
+        // var htmlText = `<h1>Meet DHTMLX Rich Text Editor!</h1>` +
+        // `<p>This demo will show you a customizable JavaScript rich text editor.</p>` +
+        // `<p><i>Read more in</i><a href="https://docs.dhtmlx.com"><i>documentation</i></a></p>.`
+        //
+        // richtext.setValue(htmlText);
+        // toolbar:[
+        //   'source','|',
+        //   'heading','|',
+        //   'Save',
+        //   'NewPage',
+        //   'Preview','|',
+        //   'Templates',
+        //   'Cut',
+        //   'Copy',
+        //   'Paste',
+        //   'PasteText',
+        //   'PasteFromWord','|',
+        //   'Print',
+        //   'SpellChecker',
+        //   'Scayt',
+        //   'Undo',
+        //   'Redo','|',
+        //   'Find',
+        //   'Replace','|',
+        //   'SelectAll',
+        //   'RemoveFormat',
+        //   'Form',
+        //   'Checkbox',
+        //   'Radio',
+        //   'TextField',
+        //   'Textarea',
+        //   'Select',
+        //   'Button',
+        //   'ImageButton',
+        //   'HiddenField','|',
+        //   'Bold',
+        //   'Italic',
+        //   'Underline',
+        //   'Strike','|',
+        //   'Subscript',
+        //   'Superscript',
+        //   'NumberedList',
+        //   'BulletedList','|',
+        //   'outdent',
+        //   'indent',
+        //   'Blockquote',
+        //   'CreateDiv',
+        //   'JustifyLeft',
+        //   'JustifyCenter',
+        //   'JustifyRight',
+        //   'JustifyBlock',
+        //   'BidiLtr',
+        //   'BidiRtl',
+        //   'Link',
+        //   'Unlink',
+        //   'Anchor',
+        //   'Image',
+        //   'Flash',
+        //   'Table',
+        //   'HorizontalRule',
+        //   'Smiley',
+        //   'SpecialChar',
+        //   'PageBreak','|',
+        //   'Styles',
+        //   'Format',
+        //   'Font',
+        //   'FontSize',
+        //   'TextColor',
+        //   'BGColor',
+        //   'Maximize',
+        //   'showBlocks','|',
+        //   'about'
+        // ],
+        // ClassicEditor.defaultConfig = {
+        //     toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
+        //
+        //     // This value must be kept in sync with the language defined in webpack.config.js.
+        //     language: 'en'
+        // };
+        //console.log(Array.from(editor.ui.componentFactory.names()));
+        // creating dhtmlxRichText
+</script>
+</body>
+</html>

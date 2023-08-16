@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maike.myblog.mapper.FriendLinkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maike.myblog.entity.FriendLink">
+        <id column="id" property="id" />
+        <result column="link_name" property="linkName" />
+        <result column="link_url" property="linkUrl" />
+        <result column="link_type" property="linkType" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,324 @@
+.comments_input_area {
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+/*标签部分的样式*/
+
+#tag-list a {
+	text-decoration:none;
+    display: block;
+    width: auto;
+    padding-left:9px;
+    padding-right:9px;
+    height: 35px;
+    background: #f2f2f2;
+    float: left;
+    margin: 5px;
+    line-height: 35px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    color: #ff6a6a;
+    text-align: center;
+    -webkit-transition: -webkit-transform 0.4s ease-out;
+    -moz-transition: -moz-transform 0.4s ease-out;
+    -o-transition: -o-transform 0.4s ease-out;
+    -ms-transition: -ms-transform 0.4s ease-out;
+}
+
+#tag-list a:hover {
+    -webkit-transform: rotateZ(360deg);
+    -moz-transform: rotateZ(360deg);
+    -o-transform: rotateZ(360deg);
+    -ms-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+}
+
+#tag-list a,
+#tag-list a:visited,
+#tag-list a:link {
+    /* color: #89b3c9; */
+}
+/*****************热门推荐文章**********************/
+.latest-hot-article{
+	width: 100%;
+	
+}
+.latest-hot-article .articlelist-first-life{
+	width: 100%;
+	height:auto;
+}
+.latest-hot-article .articlelist-first-life a{
+	display:block;
+	/* border:1px #5ba391 solid; */
+	overflow:hidden;
+	position:relative;
+	text-align:center;
+	cursor:default;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+.latest-hot-article .articlelist-first-life a img{
+	width:100%;
+	margin:0;
+	padding:0;
+	height:125px;
+	background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    position:relative;
+	-webkit-transition:all .4s linear;
+	transition:all .4s linear;
+}
+.latest-hot-article .articlelist-first-life a span{
+	display:block;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	position: absolute;
+	bottom: 0;
+	opacity:inherit;
+	white-space:normal;
+	text-overflow:ellipsis;
+	-webkit-transition:all .4s ease-in-out;
+	transition:all .4s ease-in-out;
+	text-transform:uppercase;
+	color: #F9F0DA;
+    margin: 0 auto;
+	background:#22222288;
+	text-align:center;
+	z-index: 123;
+}
+.latest-hot-article .articlelist-first-life a:hover img{
+	-ms-transform:scale(1.2);
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+.latest-hot-article .articlelist-first-life a:hover span{
+	/* -ms-transform:scale(1.2);
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2); */
+}
+.latest-hot-article .articlelist{
+	width:100%;
+	height:auto;
+	margin:0;
+	padding:0;
+}
+.latest-hot-article .articlelist{
+	margin-top:4px;
+	margin-bottom:4px;
+	height: 60px;
+	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	border-top:#dadada 1px solid; 
+}
+.latest-hot-article .articlelist:hover{
+	background: #f1f1f1;
+}
+.latest-hot-article .articlelist:hover a i img{
+	-ms-transform:scale(1.2);
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+.latest-hot-article .articlelist a{
+	text-decoration: none;
+	color: #262827;
+	display:block;
+}
+.latest-hot-article .articlelist a i{
+	float: left;
+	display:block;
+	overflow:hidden;
+	position:relative;
+	text-align:center;
+	cursor:default;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+.latest-hot-article .articlelist a i img{
+	width:60px;
+	margin:0;
+	padding:0;
+	height:50px;
+	background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    position:relative;
+	-webkit-transition:all .4s linear;
+	transition:all .4s linear;
+}
+.latest-hot-article .articlelist p{
+	width:auto;
+	padding:0 0 0 5px;
+	height:50px;
+	line-height:25px;
+	white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	font-size: 12px;
+}
+/*********************************** 下面是评论框中的一些重要css样式 **************************************/
+
+.Input_Box {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #ccc;
+    transition: border linear 0.2s, box-shadow linear 0.5s;
+    -moz-transition: border linear 0.2s, -moz-box-shadow linear 0.5s;
+    -webkit-transition: border linear 0.2s, -webkit-box-shadow linear 0.5s;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    -moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.Input_text {
+    width: 100%;
+    min-height: 40px;
+    padding: 5px;
+    outline: none;
+    border: 0px solid #fff;
+    resize: none;
+    font: 14px "微软雅黑", Arial, Helvetica, sans-serif;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.Input_Foot {
+    width: 100%;
+    height: 35px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+    bottom: 0;
+}
+
+.imgBtn {
+    float: left;
+    text-decoration: none;
+    margin-top: 8px;
+    margin-left: 10px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: 0 -13px;
+    height: 18px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.imgBtn:active {
+    margin-top: 9px;
+}
+
+.imgBtn:hover {
+    background-position: 0 -31px;
+}
+
+.postBtn {
+    float: right;
+    font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
+    color: #808080;
+    padding: 9px 20px 7px 20px;
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+    -moz-border-radius: 0 0 5px 0;
+    -webkit-border-radius: 0 0 5px 0;
+    border-radius: 0 0 5px 0;
+}
+
+.postBtn:hover {
+    color: #333;
+    background-color: #efefef;
+}
+
+.postBtn:active {
+    padding: 10px 20px 6px 20px;
+}
+
+.faceDiv {
+    max-width: 100%;
+    width:auto;
+    border: 1px solid gray;
+    position: relative;
+    display: none;
+    background-color: #fff;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.faceDiv>.emoji_container>section>._img img {
+    border: 1px solid #ccc;
+    float: left;
+    max-width: 48px;
+    max-height: 48px;
+    margin-left: -1px;
+    margin-top: -1px;
+    position: relative;
+    cursor: pointer;
+}
+
+.faceDiv>img:hover {
+    background-color: #efefef;
+}
+
+.faceDiv>img:active {
+    padding: 4px 3px 2px 3px;
+}
+
+.emoji_tab {
+    position: relative;
+    border-top: 1px solid gray;
+    height: 2em;
+    line-height: 2em;
+    white-space: nowrap;
+    overflow-x: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.emoji_tab a {
+    display: inline-block;
+    text-decoration: none;
+    height: 1em;
+    line-height: 1em;
+    padding: 0.2em 0.5em;
+    background-color: rgb(199, 199, 199);
+    box-shadow: 1px 1px 3px gray;
+    border-radius: 5px;
+    margin: 0 0.2em;
+}
+
+.emoji_container {
+    height: 111px;
+    padding: 0.5em;
+    overflow: auto;
+}
+
+.emoji_container section {
+    display: none;
+}
+
+._img {
+    width: auto;
+}
+
+.active {
+    background-color: black;
+    color: white;
+}
